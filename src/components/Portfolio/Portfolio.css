@@ -37,9 +37,9 @@
 }
 
 .portfolio__line {
+    margin: 20px 0 20px 0;
     height: 1px;
     background-color: #424242;
-    margin: 20px 0 20px 0;
 }
 
 @media screen and (max-width: 840px) {
