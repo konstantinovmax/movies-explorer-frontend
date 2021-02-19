@@ -1,7 +1,7 @@
-header, span, div, nav, p, h1, h2, h3, h4, a, section, ul, li, img, iframe, input, textarea, button {
+/* header, span, div, nav, p, h1, h2, h3, h4, a, section, ul, li, img, iframe, input, textarea, button {
   outline: 1px solid;
   outline-color: red;
-}
+} */
 
 
 .app {
@@ -12,6 +12,7 @@ header, span, div, nav, p, h1, h2, h3, h4, a, section, ul, li, img, iframe, inpu
 }
 
 .app__content {
+  min-height: 100vh;
   min-width: 300px;
   max-width: 1280px;
   margin: 0 auto;

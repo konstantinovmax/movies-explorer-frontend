@@ -25,6 +25,11 @@
     line-height: 15px;
 }
 
+.movies-card-list__more-movies-button:hover {
+    opacity: 0.8;
+    transition: ease .3s;
+}
+
 @media screen and (max-width: 1100px) {
     .movies-card-list__grid {
         row-gap: 47px;

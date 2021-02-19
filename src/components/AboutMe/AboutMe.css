@@ -65,6 +65,11 @@
     color: #fff;
 }
 
+.about-me__link:hover {
+    opacity: 0.7;
+    transition: ease .3s;
+}
+
 .about-me__photo {
     width: 270px;
     height: 327px;

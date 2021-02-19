@@ -22,7 +22,6 @@
     color: #fff;
     border: none;
     outline: none;
-    cursor: default;
 }
 
 .movies-card__already-added-icon {
@@ -36,6 +35,21 @@
     background-image: url(../../images/already-added-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
+}
+
+.movies-card__delete-button {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #313131;
+    background-image: url(../../images/delete-button-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 }
 
 .movies-card__image {

@@ -8,6 +8,8 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies'
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Profile from '../Profile/Profile'
+import Register from '../Register/Register';
+import Login from '../Login/Login';
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
       <div className="app__content">
         <Header />
         <Switch>
+          <Route path="/signup">
+            <Register />
+          </Route>
+          <Route path="/signin">
+            <Login />
+          </Route>
           <Route exact path="/">
             <Main />
           </Route>
@@ -24,8 +32,11 @@ function App() {
           <Route path="/saved-movies">
             <SavedMovies />
           </Route>
-          <Route>
+          <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
           </Route>
         </Switch>
         <Footer />
