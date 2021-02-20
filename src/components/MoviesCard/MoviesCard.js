@@ -109,31 +109,29 @@ function MoviesCard() {
                         </div>
                     </figure>
                 </Route>
-                <Route path="/saved-movies">
-                    <figure className="movies-card">
-                        <img className="movies-card__image" src={filmTwo} alt="Киноальманах «100 лет дизайна»" />
-                        <div className="movies-card__description-duration-container">
-                            <p className="movies-card__description">Киноальманах «100 лет дизайна»</p>
-                            <p className="movies-card__duration">1ч 17м</p>
-                        </div>
-                    </figure>
-                    <figure className="movies-card">
-                        <img className="movies-card__image" src={filmSeven} alt="Когда я думаю о Германии ночью" />
-                        <div className="movies-card__description-duration-container">
-                            <p className="movies-card__description">Когда я думаю о Германии ночью</p>
-                            <p className="movies-card__duration">1ч 17м</p>
-                        </div>
-                    </figure>
-                    <figure className="movies-card">
-                        <span className="movies-card__delete-button" />
-                        <img className="movies-card__image" src={filmEleven} alt="Пи Джей Харви: A dog called money" />
-                        <div className="movies-card__description-duration-container">
-                            <p className="movies-card__description">Пи Джей Харви: A dog called money</p>
-                            <p className="movies-card__duration">1ч 17м</p>
-                        </div>
-                    </figure>
-                </Route>
             </Switch>
+            <figure className="movies-card">
+                <img className="movies-card__image" src={filmTwo} alt="Киноальманах «100 лет дизайна»" />
+                <div className="movies-card__description-duration-container">
+                    <p className="movies-card__description">Киноальманах «100 лет дизайна»</p>
+                    <p className="movies-card__duration">1ч 17м</p>
+                </div>
+            </figure>
+            <figure className="movies-card">
+                <img className="movies-card__image" src={filmSeven} alt="Когда я думаю о Германии ночью" />
+                <div className="movies-card__description-duration-container">
+                    <p className="movies-card__description">Когда я думаю о Германии ночью</p>
+                    <p className="movies-card__duration">1ч 17м</p>
+                </div>
+            </figure>
+            <figure className="movies-card">
+                <span className="movies-card__delete-button" />
+                <img className="movies-card__image" src={filmEleven} alt="Пи Джей Харви: A dog called money" />
+                <div className="movies-card__description-duration-container">
+                    <p className="movies-card__description">Пи Джей Харви: A dog called money</p>
+                    <p className="movies-card__duration">1ч 17м</p>
+                </div>
+            </figure>
         </>
     );
 }
