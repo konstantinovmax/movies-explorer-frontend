@@ -1,7 +1,8 @@
 .footer {
+    padding: 79px 70px 20px 70px;
     display: flex;
     flex-direction: column;
-    padding: 79px 70px 20px 70px;
+    flex-shrink: 0;
 }
 
 .footer__text {
@@ -10,8 +11,8 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
-    color: #8B8B8B;
     text-align: center;
+    color: #8B8B8B;
 }
 
 .footer__copyright-links-container {
@@ -27,6 +28,7 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
+    color: #fff;
 }
 
 .footer__links-container {
@@ -41,8 +43,8 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
-    color: #fff;
     text-decoration: none;
+    color: #fff;
 }
 
 .footer__link:hover {
@@ -52,22 +54,19 @@
 
 @media screen and (max-width: 840px) {
     .footer {
-        padding-right: 30px;
-        padding-left: 30px;
+        padding: 79px 30px 20px 30px;
     }
 }
 
 @media screen and (max-width: 510px) {
     .footer {
-        padding-right: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
+        padding: 79px 10px 10px 10px;
     }
 }
 
 @media screen and (max-width: 510px) {
     .footer__text {
-        margin-bottom: 21px;
+        margin: 0 0 21px 0;
         font-size: 12px;
         line-height: 15px;
     }
@@ -81,7 +80,7 @@
 
 @media screen and (max-width: 510px) {
     .footer__links-container {
-        margin-top: 30px;
+        margin: 30px 0 0 0;
         flex-direction: column;
         align-items: center;
         gap: 12px;
@@ -97,7 +96,7 @@
 
 @media screen and (max-width: 510px) {
     .footer__copyright {
-        margin-top: 30px;
+        margin: 30px 0 0 0;
         font-size: 12px;
         line-height: 15px;
         color: #8B8B8B;

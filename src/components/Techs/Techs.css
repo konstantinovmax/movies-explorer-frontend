@@ -1,18 +1,19 @@
 .techs {
+    padding: 100px 70px 100px 70px;
     display: flex;
     flex-direction: column;
-    padding: 100px 70px 100px 70px;
     background-color: #272727;
 }
 
 .techs__section-title {
     margin: 0;
+    padding: 0 0 23px 0;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 22px;
     font-weight: 400;
     line-height: 27px;
-    padding-bottom: 23px;
-    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    color: #fff;
 }
 
 .techs__text-techs-container {
@@ -23,22 +24,24 @@
 
 .techs__title {
     margin: 90px 0 0 0;
+    max-width: 600px;
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 50px;
     font-weight: 400;
     line-height: 58px;
     text-align: center;
-    max-width: 600px;
+    color: #fff;
 }
 
 .techs__text {
     margin: 26px 0 0 0;
+    max-width: 460px;
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     text-align: center;
-    max-width: 460px;
+    color: #fff;
 }
 
 .techs__techs-container {
@@ -61,6 +64,7 @@
     font-weight: 400;
     line-height: 17px;
     text-align: center;
+    color: #fff;
 }
 
 @media screen and (max-width: 840px) {
@@ -71,13 +75,13 @@
 
 @media screen and (max-width: 840px) {
     .techs__title {
-        margin-top: 80px;
+        margin: 80px 0 0 0;
     }
 }
 
 @media screen and (max-width: 840px) {
     .techs__text {
-        margin-top: 22px;
+        margin: 22px 0 0 0;
         font-size: 12px;
         line-height: 18px;
     }
@@ -85,7 +89,7 @@
 
 @media screen and (max-width: 840px) {
     .techs__techs-container {
-        margin-top: 83px;
+        margin: 83px 0 0 0;
     }
 }
 
@@ -121,15 +125,15 @@
 
 @media screen and (max-width: 510px) {
     .techs__section-title {
+        padding: 0 0 28px 0;
         font-size: 18px;
         line-height: 22px;
-        padding-bottom: 28px;
     }
 }
 
 @media screen and (max-width: 510px) {
     .techs__title {
-        margin-top: 60px;
+        margin: 60px 0 0 0;
         font-size: 30px;
         line-height: 36px;
     }
@@ -137,7 +141,7 @@
 
 @media screen and (max-width: 510px) {
     .techs__text {
-        margin-top: 24px;
+        margin: 24px 0 0 0;
         font-size: 11px;
         line-height: 16px;
         max-width: 292px;
@@ -146,6 +150,6 @@
 
 @media screen and (max-width: 510px) {
     .techs__techs-container {
-        margin-top: 50px;
+        margin: 50px 0 0 0;
     }
 }

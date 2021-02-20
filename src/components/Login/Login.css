@@ -18,9 +18,9 @@
 
 .login__form {
     margin: 40px 0 0 0;
+    width: 396px;
     display: flex;
     flex-direction: column;
-    width: 396px;
 }
 
 .login__title {
@@ -29,6 +29,7 @@
     font-size: 24px;
     font-weight: 500;
     line-height: 29px;
+    color: #fff;
 }
 
 .login__input-name {
@@ -41,19 +42,19 @@
 }
 
 .login__input {
-    width: 100%;
     padding: 0 0 0 15px;
+    width: 100%;
     height: 46px;
     border-radius: 8px;
     background-color: #2F2F2F;
     border: none;
     outline: none;
-    color: #fff;
+    box-sizing: border-box;
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
-    box-sizing: border-box;
+    color: #fff;
 }
 
 .login__submit-button {
@@ -80,8 +81,8 @@
 .login__question-container {
     margin: 16px 0 0 0;
     display: flex;
-    gap: 6px;
     justify-content: center;
+    gap: 6px;
 }
 
 .login__question-text {
@@ -98,8 +99,8 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
-    color: #4285F4;
     text-decoration: none;
+    color: #4285F4;
 }
 
 .login__link-to-signup:hover {
@@ -116,8 +117,8 @@
 
 @media screen and (max-width: 510px) {
     .login__container {
-        align-items: center;
         width: 100%;
+        align-items: center;
     }
 }
 

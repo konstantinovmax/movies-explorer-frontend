@@ -6,16 +6,17 @@
 
 .about-project__section-title {
     margin: 0;
+    padding: 0 0 23px 0;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 22px;
     font-weight: 400;
     line-height: 27px;
-    padding-bottom: 23px;
-    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    color: #fff;
 }
 
 .about-project__two-columns {
-    margin-top: 70px;
+    margin: 70px 0 0 0;
     display: flex;
     gap: 40px;
 }
@@ -31,15 +32,16 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    color: #fff;
 }
 
 .about-project__column-text {
-    margin: 0;
+    margin: 26px 0 0 0;
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    margin-top: 26px;
+    color: #fff;
 }
 
 .about-project__progress-bar-container {
@@ -47,14 +49,14 @@
 }
 
 .about-project__progress-bar-container_type_first {
-    margin-top: 110px;
+    margin: 110px 0 0 0;
 }
 
 .about-project__progress-bar {
+    height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 36px;
 }
 
 .about-project__progress-bar_type_backend {
@@ -81,6 +83,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
+    color: #fff;
 }
 
 .about-project__progress-bar-text_type_black {
@@ -109,7 +112,7 @@
 
 @media screen and (max-width: 840px) {
     .about-project__column-text {
-        margin-top: 22px;
+        margin: 22px 0 0 0;
         font-size: 12px;
         line-height: 18px;
     }
@@ -117,7 +120,7 @@
 
 @media screen and (max-width: 840px) {
     .about-project__progress-bar-container_type_one {
-        margin-top: 93px;
+        margin: 93px 0 0 0;
     }
 }
 
@@ -129,16 +132,16 @@
 
 @media screen and (max-width: 510px) {
     .about-project__section-title {
+        padding: 0 0 28px 0;
         font-size: 18px;
         line-height: 22px;
-        padding-bottom: 28px;
     }
 }
 
 @media screen and (max-width: 510px) {
     .about-project__two-columns {
+        margin: 60px 0 0 0;
         flex-direction: column;
-        margin-top: 60px;
         gap: 56px;
     }
 }
@@ -152,7 +155,7 @@
 
 @media screen and (max-width: 510px) {
     .about-project__column-text {
-        margin-top: 16px;
+        margin: 16px 0 0 0;
         font-size: 11px;
         line-height: 16px;
     }
@@ -160,7 +163,7 @@
 
 @media screen and (max-width: 510px) {
     .about-project__progress-bar-container_type_one {
-        margin-top: 60px;
+        margin: 60px 0 0 0;
     }
 }
 

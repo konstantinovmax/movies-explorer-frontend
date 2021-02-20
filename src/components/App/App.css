@@ -7,15 +7,15 @@
 .app {
   margin: 0;
   background-color: #202020;
-  color: #fff;
   font-family: 'Inter', 'Arial', sans-serif;
+  color: #fff;
 }
 
 .app__content {
-  min-height: 100vh;
+  margin: 0 auto;
   min-width: 300px;
   max-width: 1280px;
-  margin: 0 auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }

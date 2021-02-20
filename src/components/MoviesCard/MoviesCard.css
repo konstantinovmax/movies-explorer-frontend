@@ -15,13 +15,13 @@
     justify-content: center;
     background-color: #313131;
     border-radius: 30px;
+    border: none;
+    outline: none;
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 10px;
     font-weight: 400;
     line-height: 9px;
     color: #fff;
-    border: none;
-    outline: none;
 }
 
 .movies-card__already-added-icon {
@@ -73,6 +73,7 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 16px;
+    color: #fff;
 }
 
 .movies-card__duration {
@@ -106,6 +107,6 @@
 
 @media screen and (max-width: 510px) {
     .movies-card__description-duration-container {
-        margin-top: 16px;
+        margin: 16px 0 0 0;
     }
 }
