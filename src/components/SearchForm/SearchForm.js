@@ -6,7 +6,14 @@ function SearchForm() {
     return (
         <form className="search-form">
             <div className="search-form__container">
-                <input type="text" className="search-form__input" placeholder="Фильм" />
+                <input
+                type="text"
+                className="search-form__input"
+                placeholder="Фильм"
+                minLength="2"
+                maxLength="30"
+                required
+                />
                 <button type="submit" className="search-form__button" />
             </div>
             <FilterCheckbox />

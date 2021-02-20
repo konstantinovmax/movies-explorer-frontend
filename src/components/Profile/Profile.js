@@ -9,11 +9,19 @@ function Profile() {
                 <form className="profile__form">
                     <div className="profile__user-name-email-container profile__user-name-email-container_type_first">
                         <p className="profile__user-data">Имя</p>
-                        <input type="text" className="profile__input" value="Максим" />
+                        <input
+                        type="text"
+                        className="profile__input"
+                        value="Максим"
+                        />
                     </div>
                     <div className="profile__user-name-email-container profile__user-name-email-container_type_second">
                         <p className="profile__user-data">Почта</p>
-                        <input type="text" className="profile__input" value="pochta@yandex.ru" />
+                        <input
+                        type="text"
+                        className="profile__input"
+                        value="pochta@yandex.ru"
+                        />
                     </div>
                 </form>
             </div>

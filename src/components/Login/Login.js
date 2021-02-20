@@ -11,10 +11,27 @@ function Login() {
                 <form className="login__form">
                     <h1 className="login__title">Рады видеть!</h1>
                     <p className="login__input-name">E-mail</p>
-                    <input type="email" className="login__input" />
+                    <input
+                    type="email"
+                    className="login__input"
+                    placeholder="pochta@yandex.ru"
+                    autoComplete="none"
+                    pattern="^([\w.*-]+@([\w-]+\.)+[\w-]{2,4})?$"
+                    required
+                    />
                     <span id="login-input-error" class="login__input-error"></span>
                     <p className="login__input-name">Пароль</p>
-                    <input type="password" className="login__input" />
+                    <input
+                    type="password"
+                    className="login__input"
+                    placeholder="Минимум 8 символов"
+                    autoComplete="none"
+                    minLength="8"
+                    maxLength="30"
+                    pattern="^\S*$"
+                    title="Не допускается использование пробела в пароле"
+                    required
+                    />
                     <span id="login-input-error" class="login__input-error"></span>
                     <button type="submit" className="login__submit-button">Войти</button>
                     <div className="login__question-container">
