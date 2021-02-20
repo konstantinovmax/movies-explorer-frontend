@@ -4,9 +4,17 @@ import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 function Navigation(props) {
+
+    function handleClickLayoutMenuClose(e) {
+        if (e.target === e.currentTarget) {
+            props.onClose();
+        }
+    };
+
     return (
         <>
-            <div className={`navigation ${props.isOpen && 'navigation_type_is-open'}`}>
+            <div className="navigation">
+                <div className={`navigation__blur ${props.isOpen && 'navigation__blur_type_is-open'}`} onClick={handleClickLayoutMenuClose}/>
                 <div className={`navigation__menu-container-mobile ${props.isOpen && 'navigation__menu-container-mobile_type_is-open'}`}>
                     <nav className="navigation__menu-mobile">
                         <NavLink exact to="/" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Главная</NavLink>
@@ -19,6 +27,7 @@ function Navigation(props) {
                     </NavLink>
                 </div>
             </div>
+                
             <Switch>
                 <Route path={["/movies", "/saved-movies", "/profile"]}>
                     <nav className="navigation__movies-container">
