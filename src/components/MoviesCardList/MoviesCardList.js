@@ -8,17 +8,17 @@ function MoviesCardList() {
         <Switch>
             <Route path="/movies">
                 <section className="movies-card-list">
-                    <div className="movies-card-list__grid">
+                    <ul className="movies-card-list__grid">
                         <MoviesCard />
-                    </div>
+                    </ul>
                     <button className="movies-card-list__more-movies-button">Ещё</button>
                 </section>
             </Route>
             <Route path="/saved-movies">
                 <section className="movies-card-list">
-                    <div className="movies-card-list__grid">
+                    <ul className="movies-card-list__grid">
                         <MoviesCard />
-                    </div>
+                    </ul>
                 </section>
             </Route>
         </Switch>

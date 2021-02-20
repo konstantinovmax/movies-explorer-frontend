@@ -11,10 +11,10 @@ function Header(props) {
             <Route exact path="/">
                 <header className="header">
                     <Link to="/"><img className="header__logo" src={projectLogo} alt="Логотип сервиса Movies Explorer" /></Link>
-                    <div className="header__auth-container">
+                    <nav className="header__auth-container">
                         <Link to="/signup" className="header__auth-link header__auth-link_type_signup">Регистрация</Link>
                         <Link to="/signin" className="header__auth-link header__auth-link_type_signin">Войти</Link>
-                    </div>
+                    </nav>
                     <button type="button" className="header__menu-burger-container" onClick={props.isOpen ? props.onClose : props.onOpenMobileMenu}>
                             <span className={`header__menu-burger-button ${props.isOpen && 'header__menu-burger-button_type_close'}`} />
                     </button>

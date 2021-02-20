@@ -22,115 +22,115 @@ function MoviesCard() {
                     <figure className="movies-card">
                         <button type="button" className="movies-card__add-button">Сохранить</button>
                         <img className="movies-card__image" src={filmOne} alt="33 слова о дизайне" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">33 слова о дизайне</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <span className="movies-card__already-added-icon" />
                         <img className="movies-card__image" src={filmTwo} alt="Киноальманах «100 лет дизайна»" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Киноальманах «100 лет дизайна»</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmThree} alt="В погоне за Бенкси" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">В погоне за Бенкси</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmFour} alt="Баския: Взрыв реальности" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Баския: Взрыв реальности</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmFive} alt="Бег это свобода" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Бег это свобода</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <button type="button" className="movies-card__add-button">Сохранить</button>
                         <img className="movies-card__image" src={filmSix} alt="Книготорговцы" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Книготорговцы</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <span className="movies-card__already-added-icon" />
                         <img className="movies-card__image" src={filmSeven} alt="Когда я думаю о Германии ночью" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Когда я думаю о Германии ночью</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmEight} alt="Gimme Danger: История Игги и The Stooges" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Gimme Danger: История Игги и The Stooges</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmNine} alt="Дженис: Маленькая девочка грустит" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Дженис: Маленькая девочка грустит</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmTen} alt="Соберись перед прыжком" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Соберись перед прыжком</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <span className="movies-card__already-added-icon" />
                         <img className="movies-card__image" src={filmEleven} alt="Пи Джей Харви: A dog called money" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">Пи Джей Харви: A dog called money</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                     <figure className="movies-card">
                         <img className="movies-card__image" src={filmTwelve} alt="По волнам: Искусство звука в кино" />
-                        <div className="movies-card__description-duration-container">
+                        <figcaption className="movies-card__description-duration-container">
                             <p className="movies-card__description">По волнам: Искусство звука в кино</p>
                             <p className="movies-card__duration">1ч 17м</p>
-                        </div>
+                        </figcaption>
                     </figure>
                 </Route>
             </Switch>
             <figure className="movies-card">
                 <img className="movies-card__image" src={filmTwo} alt="Киноальманах «100 лет дизайна»" />
-                <div className="movies-card__description-duration-container">
+                <figcaption className="movies-card__description-duration-container">
                     <p className="movies-card__description">Киноальманах «100 лет дизайна»</p>
                     <p className="movies-card__duration">1ч 17м</p>
-                </div>
+                </figcaption>
             </figure>
             <figure className="movies-card">
                 <img className="movies-card__image" src={filmSeven} alt="Когда я думаю о Германии ночью" />
-                <div className="movies-card__description-duration-container">
+                <figcaption className="movies-card__description-duration-container">
                     <p className="movies-card__description">Когда я думаю о Германии ночью</p>
                     <p className="movies-card__duration">1ч 17м</p>
-                </div>
+                </figcaption>
             </figure>
             <figure className="movies-card">
                 <span className="movies-card__delete-button" />
                 <img className="movies-card__image" src={filmEleven} alt="Пи Джей Харви: A dog called money" />
-                <div className="movies-card__description-duration-container">
+                <figcaption className="movies-card__description-duration-container">
                     <p className="movies-card__description">Пи Джей Харви: A dog called money</p>
                     <p className="movies-card__duration">1ч 17м</p>
-                </div>
+                </figcaption>
             </figure>
         </>
     );

@@ -8,11 +8,11 @@ function Navigation(props) {
         <>
             <div className={`navigation ${props.isOpen && 'navigation_type_is-open'}`}>
                 <div className={`navigation__menu-container-mobile ${props.isOpen && 'navigation__menu-container-mobile_type_is-open'}`}>
-                    <ul className="navigation__menu-mobile">
-                        <li><NavLink exact to="/" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Главная</NavLink></li>
-                        <li><NavLink to="/movies" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Фильмы</NavLink></li>
-                        <li><NavLink to="/saved-movies" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Сохранённые фильмы</NavLink></li>
-                    </ul>
+                    <nav className="navigation__menu-mobile">
+                        <NavLink exact to="/" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Главная</NavLink>
+                        <NavLink to="/movies" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Фильмы</NavLink>
+                        <NavLink to="/saved-movies" className="navigation__menu-mobile-link" activeClassName="navigation__menu-mobile-link_type_active" onClick={props.onClose}>Сохранённые фильмы</NavLink>
+                    </nav>
                     <NavLink to="/profile" className="navigation__profile-container-link" onClick={props.onClose}>
                         <p className="navigation__user-data">Аккаунт</p>
                         <div className="navigation__auth-pic" />
@@ -21,10 +21,10 @@ function Navigation(props) {
             </div>
             <Switch>
                 <Route path={["/movies", "/saved-movies", "/profile"]}>
-                    <div className="navigation__movies-container">
+                    <nav className="navigation__movies-container">
                         <NavLink to="/movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Фильмы</NavLink>
                         <NavLink to="/saved-movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Сохранённые фильмы</NavLink>
-                    </div>
+                    </nav>
                 </Route>
             </Switch>
         </>

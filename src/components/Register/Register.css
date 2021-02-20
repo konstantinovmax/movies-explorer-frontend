@@ -57,6 +57,10 @@
     box-sizing: border-box;
 }
 
+.register__input:focus {
+    box-shadow: 0 0 0.5pt 0.5pt #4285F4;
+}
+
 .register__submit-button {
     margin: 70px 0 0 0;
     width: 100%;

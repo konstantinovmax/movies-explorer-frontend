@@ -10,11 +10,11 @@ function Footer() {
                     <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
                     <div className="footer__copyright-links-container">
                         <p className="footer__copyright">© 2021</p>
-                        <div className="footer__links-container">
-                            <a href="https://praktikum.yandex.ru/" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
-                            <a href="https://github.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Github</a>
-                            <a href="https://www.facebook.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Facebook</a>
-                        </div>
+                        <ul className="footer__links-container">
+                            <li><a href="https://praktikum.yandex.ru/" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a></li>
+                            <li><a href="https://github.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Github</a></li>
+                            <li><a href="https://www.facebook.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Facebook</a></li>
+                        </ul>
                     </div>
                 </footer>
             </Route>
@@ -23,11 +23,11 @@ function Footer() {
                     <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
                     <div className="footer__copyright-links-container">
                         <p className="footer__copyright">© 2021</p>
-                        <div className="footer__links-container">
-                            <a href="https://praktikum.yandex.ru/" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
-                            <a href="https://github.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Github</a>
-                            <a href="https://www.facebook.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Facebook</a>
-                        </div>
+                        <ul className="footer__links-container">
+                            <li><a href="https://praktikum.yandex.ru/" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a></li>
+                            <li><a href="https://github.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Github</a></li>
+                            <li><a href="https://www.facebook.com/konstantinovmax" className="footer__link" target="_blank" rel="noreferrer">Facebook</a></li>
+                        </ul>
                     </div>
                 </footer>
             </Route>

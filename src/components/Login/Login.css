@@ -57,6 +57,10 @@
     color: #fff;
 }
 
+.login__input:focus {
+    box-shadow: 0 0 0.5pt 0.5pt #4285F4;
+}
+
 .login__submit-button {
     margin: 160px 0 0 0;
     width: 100%;

@@ -56,6 +56,8 @@
 
 .about-me__links-container {
     margin: 99px 0 0 0;
+    padding: 0;
+    list-style: none;
     display: flex;
     gap: 20px;
 }

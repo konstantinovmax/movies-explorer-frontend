@@ -26,8 +26,8 @@ function Profile() {
                 </form>
             </div>
             <div className="profile__buttons-container">
-                <button className="profile__button profile__button_type_edit">Редактировать</button>
-                <button className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
+                <button type="button" className="profile__button profile__button_type_edit">Редактировать</button>
+                <button type="button" className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
             </div>
         </div>
     );
