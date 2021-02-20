@@ -12,7 +12,7 @@ function Profile() {
                         <input
                         type="text"
                         className="profile__input"
-                        value="Максим"
+                        defaultValue="Максим"
                         />
                     </div>
                     <div className="profile__user-name-email-container profile__user-name-email-container_type_second">
@@ -20,7 +20,7 @@ function Profile() {
                         <input
                         type="text"
                         className="profile__input"
-                        value="pochta@yandex.ru"
+                        defaultValue="pochta@yandex.ru"
                         />
                     </div>
                 </form>

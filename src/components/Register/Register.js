@@ -19,7 +19,7 @@ function Register() {
                     maxLength="30"
                     required
                     />
-                    <span id="register-input-error" class="register__input-error"></span>
+                    <span id="register-input-error" className="register__input-error"></span>
                     <p className="register__input-name">E-mail</p>
                     <input
                     type="email"
@@ -29,7 +29,7 @@ function Register() {
                     pattern="^([\w.*-]+@([\w-]+\.)+[\w-]{2,4})?$"
                     required
                     />
-                    <span id="register-input-error" class="register__input-error"></span>
+                    <span id="register-input-error" className="register__input-error"></span>
                     <p className="register__input-name">Пароль</p>
                     <input
                     type="password"
@@ -42,7 +42,7 @@ function Register() {
                     title="Не допускается использование пробела в пароле"
                     required
                     />
-                    <span id="register-input-error" class="register__input-error"></span>
+                    <span id="register-input-error" className="register__input-error"></span>
                     <button type="submit" className="register__submit-button">Зарегистрироваться</button>
                     <div className="register__question-container">
                         <p className="register__question-text">Уже зарегистрированы?</p>

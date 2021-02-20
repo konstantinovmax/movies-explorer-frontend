@@ -19,7 +19,7 @@ function Login() {
                     pattern="^([\w.*-]+@([\w-]+\.)+[\w-]{2,4})?$"
                     required
                     />
-                    <span id="login-input-error" class="login__input-error"></span>
+                    <span id="login-input-error" className="login__input-error"></span>
                     <p className="login__input-name">Пароль</p>
                     <input
                     type="password"
@@ -32,7 +32,7 @@ function Login() {
                     title="Не допускается использование пробела в пароле"
                     required
                     />
-                    <span id="login-input-error" class="login__input-error"></span>
+                    <span id="login-input-error" className="login__input-error"></span>
                     <button type="submit" className="login__submit-button">Войти</button>
                     <div className="login__question-container">
                         <p className="login__question-text">Ещё не зарегистрированы?</p>
