@@ -3,8 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import projectLogo from '../../images/header-logo.svg';
+import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header(props) {
     return (
         <Switch>
             <Route exact path="/">
@@ -14,9 +15,17 @@ function Header() {
                         <Link to="/signup" className="header__auth-link header__auth-link_type_signup">Регистрация</Link>
                         <Link to="/signin" className="header__auth-link header__auth-link_type_signin">Войти</Link>
                     </div>
-                    <button type="button" className="header__menu-burger-container">
-                        <span className="header__menu-burger-button" />
+                    <button type="button" className="header__menu-burger-container" onClick={props.isOpen ? props.onClose : props.onOpenMobileMenu}>
+                            <span className={`header__menu-burger-button ${props.isOpen && 'header__menu-burger-button_type_close'}`} />
                     </button>
+
+                    {/* Начало меню-бургера */}
+                    <Navigation
+                    isOpen={props.isOpen}
+                    onClose={props.onClose}
+                    onOpenMobileMenu={props.onOpenMobileMenu}
+                    />
+                    {/* Конец меню-бургера */}
                 </header>
             </Route>
             <Route path="/movies">
@@ -34,9 +43,17 @@ function Header() {
                             <div className="header__auth-pic" />
                         </Link>
                     </div>
-                    <button type="button" className="header__menu-burger-container">
-                        <span className="header__menu-burger-button" />
+                    <button type="button" className="header__menu-burger-container" onClick={props.isOpen ? props.onClose : props.onOpenMobileMenu}>
+                            <span className={`header__menu-burger-button ${props.isOpen && 'header__menu-burger-button_type_close'}`} />
                     </button>
+
+                    {/* Начало меню-бургера */}
+                    <Navigation
+                    isOpen={props.isOpen}
+                    onClose={props.onClose}
+                    onOpenMobileMenu={props.onOpenMobileMenu}
+                    />
+                    {/* Конец меню-бургера */}
                 </header>
             </Route>
             <Route path="/saved-movies">
@@ -54,9 +71,17 @@ function Header() {
                             <div className="header__auth-pic" />
                         </Link>
                     </div>
-                    <button type="button" className="header__menu-burger-container">
-                        <span className="header__menu-burger-button" />
+                    <button type="button" className="header__menu-burger-container" onClick={props.isOpen ? props.onClose : props.onOpenMobileMenu}>
+                            <span className={`header__menu-burger-button ${props.isOpen && 'header__menu-burger-button_type_close'}`} />
                     </button>
+
+                    {/* Начало меню-бургера */}
+                    <Navigation
+                    isOpen={props.isOpen}
+                    onClose={props.onClose}
+                    onOpenMobileMenu={props.onOpenMobileMenu}
+                    />
+                    {/* Конец меню-бургера */}
                 </header>
             </Route>
             <Route path="/profile">
@@ -74,9 +99,17 @@ function Header() {
                             <div className="header__auth-pic" />
                         </Link>
                     </div>
-                    <button type="button" className="header__menu-burger-container">
-                        <span className="header__menu-burger-button" />
+                    <button type="button" className="header__menu-burger-container" onClick={props.isOpen ? props.onClose : props.onOpenMobileMenu}>
+                            <span className={`header__menu-burger-button ${props.isOpen && 'header__menu-burger-button_type_close'}`} />
                     </button>
+                    
+                    {/* Начало меню-бургера */}
+                    <Navigation
+                    isOpen={props.isOpen}
+                    onClose={props.onClose}
+                    onOpenMobileMenu={props.onOpenMobileMenu}
+                    />
+                    {/* Конец меню-бургера */}
                 </header>
             </Route>
         </Switch>

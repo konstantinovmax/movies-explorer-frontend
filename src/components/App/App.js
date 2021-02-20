@@ -12,10 +12,24 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  function handleMobileMenuOpen() {
+    setIsMobileMenuOpen(true);
+  }
+
+  function handleMobileMenuClose() {
+    setIsMobileMenuOpen(false);
+  }
+
   return (
     <div className="app">
       <div className="app__content">
-        <Header />
+        <Header
+        isOpen={isMobileMenuOpen}
+        onClose={handleMobileMenuClose}
+        onOpenMobileMenu={handleMobileMenuOpen}
+        />
         <Switch>
           <Route path="/signup">
             <Register />
