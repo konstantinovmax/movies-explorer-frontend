@@ -1,0 +1,20 @@
+/* header, span, div, nav, p, h1, h2, h3, h4, a, section, ul, li, img, iframe, input, textarea, button {
+  outline: 1px solid;
+  outline-color: red;
+} */
+
+.app {
+  margin: 0;
+  background-color: #202020;
+  font-family: 'Inter', 'Arial', sans-serif;
+  color: #fff;
+}
+
+.app__content {
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 1280px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
