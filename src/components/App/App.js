@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -12,6 +13,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 
 function App() {
+  const [currentUser, setCurrentUser] = React.useState({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   function handleMobileMenuOpen() {
@@ -24,37 +26,39 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__content">
-        <Header
-        isOpen={isMobileMenuOpen}
-        onClose={handleMobileMenuClose}
-        onOpenMobileMenu={handleMobileMenuOpen}
-        />
-        <Switch>
-          <Route path="/signup">
-            <Register />
-          </Route>
-          <Route path="/signin">
-            <Login />
-          </Route>
-          <Route exact path="/">
-            <Main />
-          </Route>
-          <Route path="/movies">
-            <Movies />
-          </Route>
-          <Route path="/saved-movies">
-            <SavedMovies />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="*">
-            <PageNotFound />
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
+      <CurrentUserContext.Provider value={currentUser}>
+        <div className="app__content">
+          <Header
+          isOpen={isMobileMenuOpen}
+          onClose={handleMobileMenuClose}
+          onOpenMobileMenu={handleMobileMenuOpen}
+          />
+          <Switch>
+            <Route path="/signup">
+              <Register />
+            </Route>
+            <Route path="/signin">
+              <Login />
+            </Route>
+            <Route exact path="/">
+              <Main />
+            </Route>
+            <Route path="/movies">
+              <Movies />
+            </Route>
+            <Route path="/saved-movies">
+              <SavedMovies />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+            <Route path="*">
+              <PageNotFound />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
