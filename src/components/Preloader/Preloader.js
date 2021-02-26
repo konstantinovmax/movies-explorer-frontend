@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Preloader.css';
 
 function Preloader() {
     return (
         <div className="preloader">
             <div className="preloader__container">
-                <span className="preloader__round"></span>
+                <span className="preloader__round" />
             </div>
         </div>
     );

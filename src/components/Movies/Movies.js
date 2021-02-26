@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function Movies() {
+const MoviesCardList = React.lazy(() => import('../MoviesCardList/MoviesCardList'));
+
+function Movies(props) {
     return (
         <div className="movies">
-           <SearchForm />
-           <MoviesCardList />
+           <SearchForm
+           onGetMovies={props.onGetMovies}
+           />
+           <Suspense fallback={<Preloader />}>
+            <MoviesCardList
+            movies={props.movies}
+            onAddFilm={props.onAddFilm}
+            />
+           </Suspense>
         </div>
     );
 }
