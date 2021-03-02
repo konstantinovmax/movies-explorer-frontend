@@ -55,6 +55,8 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
 .movies-card__delete-button:hover {

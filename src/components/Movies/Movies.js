@@ -14,6 +14,7 @@ function Movies(props) {
            <Suspense fallback={<Preloader />}>
             <MoviesCardList
             movies={props.movies}
+            savedMovies={false}
             onAddFilm={props.onAddFilm}
             />
            </Suspense>

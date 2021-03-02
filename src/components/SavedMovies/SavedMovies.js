@@ -8,10 +8,10 @@ function SavedMovies(props) {
     return (
         <div className="saved-movies">
             <SearchForm
-            
             />
             <MoviesCardList
-            userMovies={props.userMovies}
+            movies={props.userMovies}
+            savedMovies={true}
             onDeleteFilm={props.onDeleteFilm}
             />
         </div>

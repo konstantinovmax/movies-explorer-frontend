@@ -136,9 +136,8 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    Promise.all([mainApi.getUserData(), mainApi.getUserMovies()])
-      .then(([user, userMovies]) => {
-        setCurrentUser(user);
+    Promise.all([mainApi.getUserMovies()])
+      .then(([userMovies]) => {
         setUserMovies(userMovies);
       })
       .catch((err) => {
