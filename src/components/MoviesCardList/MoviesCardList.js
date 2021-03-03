@@ -3,7 +3,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList(props) {
-    const [limit, setLimit] = React.useState(3);
+    const [limit, setLimit] = React.useState(50);
 
     function showMoreMovies() {
         setLimit(limit + 3);
@@ -12,10 +12,10 @@ function MoviesCardList(props) {
     return (
         <section className="movies-card-list">
             <div className="movies-card-list__grid">
-                {props.movies.slice(setLimit, limit).map((movie, i) => (
+                {props.movies.slice(0, limit).map((movie) => (
                     <MoviesCard
                     movie={movie}
-                    key={i}
+                    key={movie._id}
                     savedMovies={props.savedMovies}
                     onAddFilm={props.onAddFilm}
                     onDeleteFilm={props.onDeleteFilm}
@@ -25,7 +25,7 @@ function MoviesCardList(props) {
             {
             props.savedMovies
             ? ''
-            : props.movies.length >= 3 ? <button className="movies-card-list__more-movies-button" onClick={showMoreMovies}>Ещё</button> : ''
+            : props.movies.length >= 3 && props.movies.length <= 100 ? <button className="movies-card-list__more-movies-button" onClick={showMoreMovies}>Ещё</button> : ''
             }
         </section>
     );

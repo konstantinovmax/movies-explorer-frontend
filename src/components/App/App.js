@@ -53,9 +53,8 @@ function App() {
   }
 
   function handleDeleteFilm(userMovie) {
-    const isOwn = userMovie.owner._id === currentUser._id;
-
-    mainApi.deleteFilm(userMovie._id, isOwn)
+    /* const isOwn = userMovie.owner._id === currentUser._id; */
+    mainApi.deleteFilm(userMovie._id/* , isOwn */)
       .then(() => {
         const newUserMovies = userMovie.filter((m) => userMovie._id !== m._id);
         setUserMovies(newUserMovies);

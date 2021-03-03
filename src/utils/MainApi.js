@@ -7,7 +7,7 @@ class MainApi {
     getUserData() {
         return fetch(`${this._url}/me`, {
             method: 'GET',
-            header: this._headers
+            headers: this._headers
         }).then((res) => {
             if (res.ok) {
                 return res.json();
@@ -20,7 +20,7 @@ class MainApi {
     updateUserData({ email, password, name }) {
         return fetch(`${this._url}/me`, {
             method: 'PATCH',
-            header: this._headers,
+            headers: this._headers,
             body: JSON.stringify({
                 email: email,
                 password: password,
@@ -38,7 +38,7 @@ class MainApi {
     getUserMovies() {
         return fetch(`${this._url}/movies`, {
             method: 'GET',
-            header: this._headers
+            headers: this._headers
         }).then((res) => {
             if (res.ok) {
                 return res.json();
@@ -51,7 +51,7 @@ class MainApi {
     createFilm({ country, director, duration, year, description, image, trailer, thumbnail, movieId, nameRU, nameEN }) {
         return fetch(`${this._url}/movies`, {
             method: 'POST',
-            header: this._headers,
+            headers: this._headers,
             body: JSON.stringify({
                 country: country,
                 director: director,
@@ -74,10 +74,10 @@ class MainApi {
         });
     }
 
-    deleteFilm({ movieId }) {
-        return fetch(`${this._url}/${movieId}`, {
+    deleteFilm(movieId) {
+        return fetch(`${this._url}/movies/${movieId}`, {
             method: 'DELETE',
-            header: this._headers
+            headers: this._headers
         }).then((res) => {
             if (res.ok) {
                 return res.json();

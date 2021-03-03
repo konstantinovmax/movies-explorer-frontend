@@ -5,11 +5,23 @@ const apiUrl = 'https://api.nomoreparties.co';
 function MoviesCard(props) {
 
     function handleAddFilm() {
-        
+        props.onAddFilm({
+            country: props.movie.country,
+            director: props.movie.director,
+            duration: props.movie.duration,
+            year: props.movie.year,
+            description: props.movie.description,
+            image: `${apiUrl}${props.movie.image ? props.movie.image.url : ''}`,
+            trailer: props.movie.trailerLink,
+            thumbnail: `${apiUrl}${props.movie.image.formats.thumbnail ? props.movie.image.formats.thumbnail.url : ''}`,
+            movieId: props.movie.id,
+            nameRU: props.movie.nameRU,
+            nameEN: props.movie.nameEN
+        });
     }
 
     function handleDeleteFilm() {
-
+        props.onDeleteFilm(props.movie);
     }
     
     return (
