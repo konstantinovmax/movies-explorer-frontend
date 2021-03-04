@@ -172,7 +172,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .header__auth-container {
+    .header__auth-container_type_hide {
         display: none;
     }
 }

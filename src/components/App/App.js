@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import Header from '../Header/Header';
@@ -13,6 +13,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from '../../auth';
 
 function App() {
@@ -53,8 +54,8 @@ function App() {
   }
 
   function handleDeleteFilm(userMovie) {
-    /* const isOwn = userMovie.owner._id === currentUser._id; */
-    mainApi.deleteFilm(userMovie._id/* , isOwn */)
+    const isOwn = userMovie.owner._id === currentUser._id;
+    mainApi.deleteFilm(userMovie._id, isOwn)
       .then(() => {
         const newUserMovies = userMovie.filter((m) => userMovie._id !== m._id);
         setUserMovies(newUserMovies);
@@ -69,7 +70,7 @@ function App() {
       .then((res) => {
         if (res.data) {
           setAccessNotice(true);
-          history.pushState('./signin');
+          history.push('/signin');
         } else {
           setAccessNotice(false);
         }
@@ -117,7 +118,7 @@ function App() {
   function handleLogout() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    history.push('/signin');
+    history.push('/');
   }
 
   function handleGetAllMovies() {
@@ -135,8 +136,9 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    Promise.all([mainApi.getUserMovies()])
-      .then(([userMovies]) => {
+    Promise.all([mainApi.getUserData(), mainApi.getUserMovies()])
+      .then(([userData, userMovies]) => {
+        setCurrentUser(userData);
         setUserMovies(userMovies);
       })
       .catch((err) => {
@@ -149,11 +151,34 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <div className="app__content">
           <Header
+          loggedIn={loggedIn}
           isOpen={isMobileMenuOpen}
           onClose={handleMobileMenuClose}
           onOpenMobileMenu={handleMobileMenuOpen}
           />
           <Switch>
+            <ProtectedRoute
+            path="/movies"
+            loggedIn={loggedIn}
+            component={Movies}
+            movies={movies}
+            onGetMovies={handleGetAllMovies}
+            onAddFilm={handleAddFilm}
+            />
+            <ProtectedRoute
+            path="/saved-movies"
+            loggedIn={loggedIn}
+            component={SavedMovies}
+            userMovies={userMovies}
+            onDeleteFilm={handleDeleteFilm}
+            />
+            <ProtectedRoute
+            path="/profile"
+            loggedIn={loggedIn}
+            component={Profile}
+            onUpdateUser={handleUpdateUserData}
+            onLogout={handleLogout}
+            />
             <Route path="/signup">
               <Register
               onRegister={handleRegistration}
@@ -166,25 +191,6 @@ function App() {
             </Route>
             <Route exact path="/">
               <Main />
-            </Route>
-            <Route path="/movies">
-              <Movies
-              movies={movies}
-              onGetMovies={handleGetAllMovies}
-              onAddFilm={handleAddFilm}
-              />
-            </Route>
-            <Route path="/saved-movies">
-              <SavedMovies
-              userMovies={userMovies}
-              onDeleteFilm={handleDeleteFilm}
-              />
-            </Route>
-            <Route path="/profile">
-              <Profile
-              onUpdateUser={handleUpdateUserData}
-              onLogout={handleLogout}
-              />
             </Route>
             <Route path="*">
               <PageNotFound />

@@ -5,7 +5,7 @@ class MainApi {
     }
 
     getUserData() {
-        return fetch(`${this._url}/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: 'GET',
             headers: this._headers
         }).then((res) => {
@@ -18,7 +18,7 @@ class MainApi {
     }
 
     updateUserData({ email, password, name }) {
-        return fetch(`${this._url}/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({

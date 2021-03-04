@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import projectLogo from '../../images/header-logo.svg';
-import { Link } from 'react-router-dom';
 
 function Login(props) {
     const [userData, setUserData] = React.useState({ email: '', password: '', name: '' })
@@ -25,7 +25,7 @@ function Login(props) {
     return (
         <div className="login">
             <div className="login__container">
-                <img className="login__logo" src={projectLogo} alt="Логотип сервиса Movies Explorer" />
+                <Link to="/"><img className="login__logo" src={projectLogo} alt="Логотип сервиса Movies Explorer" /></Link>
                 <form className="login__form" onSubmit={handleSubmit}>
                     <h1 className="login__title">Рады видеть!</h1>
                     <p className="login__input-name">E-mail</p>

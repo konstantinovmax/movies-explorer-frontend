@@ -28,14 +28,10 @@ function Navigation(props) {
                 </div>
             </div>
                 
-            <Switch>
-                <Route path={["/movies", "/saved-movies", "/profile"]}>
-                    <nav className="navigation__movies-container">
-                        <NavLink to="/movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Фильмы</NavLink>
-                        <NavLink to="/saved-movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Сохранённые фильмы</NavLink>
-                    </nav>
-                </Route>
-            </Switch>
+            <nav className="navigation__movies-container">
+                <NavLink to="/movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Фильмы</NavLink>
+                <NavLink to="/saved-movies" className="navigation__movies-link" activeClassName="navigation__movies-link_type_active">Сохранённые фильмы</NavLink>
+            </nav>
         </>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Register.css';
 import projectLogo from '../../images/header-logo.svg';
-import { Link } from 'react-router-dom';
 
 function Register(props) {
     const [userData, setUserData] = React.useState({ email: '', password: '', name: '' })
@@ -25,7 +25,7 @@ function Register(props) {
     return (
         <div className="register">
             <div className="register__container">
-                <img className="register__logo" src={projectLogo} alt="Логотип сервиса Movies Explorer" />
+                <Link to="/"><img className="register__logo" src={projectLogo} alt="Логотип сервиса Movies Explorer" /></Link>
                 <form className="register__form" onSubmit={handleSubmit}>
                     <h1 className="register__title">Добро пожаловать!</h1>
                     <p className="register__input-name">Имя</p>
