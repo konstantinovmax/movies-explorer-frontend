@@ -41,6 +41,8 @@
     background-image: url(../../images/already-added-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
+    border: none;
+    outline: none;
 }
 
 .movies-card__delete-button {

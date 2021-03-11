@@ -62,8 +62,21 @@
     box-sizing: border-box;
 }
 
+.register__input_type_error {
+    color: #EE3465;
+}
+
 .register__input:focus {
     box-shadow: 0 0 0.5pt 0.5pt #4285F4;
+}
+
+.register__input-error {
+    margin: 10px 0 0 0;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    color: #EE3465;
 }
 
 .register__submit-button {
@@ -85,6 +98,16 @@
 .register__submit-button:hover {
     opacity: 0.8;
     transition: ease .3s;
+}
+
+.register__submit-button_type_disabled {
+    background-color: #5F5F5F;
+    cursor: default;
+    color: #C2C2C2;
+}
+
+.register__submit-button_type_disabled:hover {
+    opacity: 1;
 }
 
 .register__question-container {

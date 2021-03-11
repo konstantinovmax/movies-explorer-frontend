@@ -14,6 +14,7 @@ import Login from '../Login/Login';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import * as auth from '../../auth';
 
 function App() {
@@ -23,14 +24,21 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [accessNotice, setAccessNotice] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = React.useState(false);
+  const [noticeMessage, setNoticeMessage] = React.useState('');
   const history = useHistory();
 
   function handleMobileMenuOpen() {
     setIsMobileMenuOpen(true);
   }
 
-  function handleMobileMenuClose() {
+  function handleInfoToolTipOpen() {
+    setIsInfoToolTipOpen(true);
+  }
+
+  function handleClose() {
     setIsMobileMenuOpen(false);
+    setIsInfoToolTipOpen(false);
   }
 
   function handleUpdateUserData(newUserData) {
@@ -57,7 +65,7 @@ function App() {
     const isOwn = userMovie.owner._id === currentUser._id;
     mainApi.deleteFilm(userMovie._id, isOwn)
       .then(() => {
-        const newUserMovies = userMovie.filter((m) => userMovie._id !== m._id);
+        const newUserMovies = userMovies.filter((m) => userMovie._id !== m._id);
         setUserMovies(newUserMovies);
       })
       .catch((err) => {
@@ -70,9 +78,12 @@ function App() {
       .then((res) => {
         if (res.data) {
           setAccessNotice(true);
+          handleInfoToolTipOpen();
           history.push('/signin');
         } else {
           setAccessNotice(false);
+          setNoticeMessage(res.message);
+          handleInfoToolTipOpen();
         }
       })
       .catch((err) => {
@@ -80,8 +91,8 @@ function App() {
       })
   }
 
-  function handleLogin(email, password, name) {
-    auth.login(email, password, name)
+  function handleLogin(email, password) {
+    auth.login(email, password)
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
@@ -89,6 +100,8 @@ function App() {
           history.push('/movies');
         } else {
           setAccessNotice(false);
+          setNoticeMessage(res.message);
+          handleInfoToolTipOpen();
         }
       })
       .catch((err) => {
@@ -153,7 +166,7 @@ function App() {
           <Header
           loggedIn={loggedIn}
           isOpen={isMobileMenuOpen}
-          onClose={handleMobileMenuClose}
+          onClose={handleClose}
           onOpenMobileMenu={handleMobileMenuOpen}
           />
           <Switch>
@@ -161,16 +174,16 @@ function App() {
             path="/movies"
             loggedIn={loggedIn}
             component={Movies}
-            movies={movies}
             onGetMovies={handleGetAllMovies}
             onAddFilm={handleAddFilm}
+            movies={movies}
             />
             <ProtectedRoute
             path="/saved-movies"
             loggedIn={loggedIn}
             component={SavedMovies}
-            userMovies={userMovies}
             onDeleteFilm={handleDeleteFilm}
+            userMovies={userMovies}
             />
             <ProtectedRoute
             path="/profile"
@@ -197,6 +210,12 @@ function App() {
             </Route>
           </Switch>
           <Footer />
+          <InfoTooltip
+          isOpen={isInfoToolTipOpen}
+          onClose={handleClose}
+          accessNotice={accessNotice}
+          noticeMessage={noticeMessage}
+          />
         </div>
       </CurrentUserContext.Provider>
     </div>

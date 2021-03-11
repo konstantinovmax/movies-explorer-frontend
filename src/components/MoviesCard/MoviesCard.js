@@ -1,18 +1,10 @@
 import React from 'react';
 import './MoviesCard.css';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const apiUrl = 'https://api.nomoreparties.co';
 
 
 function MoviesCard(props) {
-    const currentUser = React.useContext(CurrentUserContext);
-    console.log(props.movie);
-    const isAlreadyAdded = props.movie.owner === currentUser._id;
-    const movieCardIconClassName = (
-        `movies-card__add-button ${isAlreadyAdded ? 'movies-card__already-added-icon' : 'movies-card__add-button'}`
-    );
-
     function handleAddFilm() {
         props.onAddFilm({
             country: props.movie.country,
@@ -37,9 +29,9 @@ function MoviesCard(props) {
         <>
             <figure className="movies-card" key={props.movie._id}>
                 {
-                props.savedMovies
-                ? <button type="button" className="movies-card__delete-button" onClick={handleDeleteFilm} />
-                : <button type="button" className={movieCardIconClassName} onClick={handleAddFilm}>Сохранить</button>
+                    props.savedMovies
+                        ? <button type="button" className="movies-card__delete-button" onClick={handleDeleteFilm} />
+                        : <button type="button" className='movies-card__add-button' onClick={handleAddFilm}>Сохранить</button>
                 }
                 <a
                 className="movies-card__trailer-link"

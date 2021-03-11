@@ -12,10 +12,11 @@ function MoviesCardList(props) {
     return (
         <section className="movies-card-list">
             <div className="movies-card-list__grid">
-                {props.movies.slice(0, limit).map((movie, i) => (
+                {props.movies.slice(0, limit).map((movie) => (
                     <MoviesCard
                     movie={movie}
-                    key={i}
+                    movies={props.movies}
+                    key={movie._id}
                     savedMovies={props.savedMovies}
                     onAddFilm={props.onAddFilm}
                     onDeleteFilm={props.onDeleteFilm}
