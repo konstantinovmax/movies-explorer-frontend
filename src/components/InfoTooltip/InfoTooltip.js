@@ -4,9 +4,8 @@ import successfulAccess from '../../images/done.png';
 import failureAccess from '../../images/denied.png';
 
 function InfoTooltip(props) {
-
     const noticeText = {
-        success: 'Вы успешно зарегистрировались!',
+        success: props.noticeMessage,
         fail: props.noticeMessage
     }
 

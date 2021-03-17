@@ -22,9 +22,8 @@ function SearchForm(props) {
 
     function handleChange(e) {
         setSearchData(e.target.value);
-
-        if (e.target.value.length < 2 || e.target.value.length > 30) {
-            setSearchDataError('Текст запроса должен составлять от 2 до 30 символов');
+        if (e.target.value.length < 1 || e.target.value.length > 30) {
+            setSearchDataError('Текст запроса должен составлять от 1 до 30 символов');
         } else {
             setSearchDataError('');
         }
@@ -32,17 +31,17 @@ function SearchForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.onGetMovies()
-        setSearchData('')
+        props.onSearchSubmit(searchData);
+        setSearchData('');
     }
 
     React.useEffect(() => {
-        if (searchDataError) {
+        if (searchDataError || searchData.length < 1) {
             setFormValid(false);
         } else {
             setFormValid(true);
         }
-    }, [searchDataError]);
+    }, [searchDataError, searchData]);
 
     return (
         <form className="search-form" onSubmit={handleSubmit}>
@@ -51,8 +50,8 @@ function SearchForm(props) {
                 type="text"
                 name="search"
                 className={`search-form__input ${(searchDataDirty && searchDataError) ? 'search-form__input_type_error' : ''}`}
-                placeholder="Фильм"
-                minLength="2"
+                placeholder="Введите запрос"
+                minLength="1"
                 maxLength="30"
                 autoComplete="off"
                 required
@@ -60,10 +59,17 @@ function SearchForm(props) {
                 value={searchData}
                 onBlur={blurHandler}
                 />
-                <button type="submit" className={`search-form__button ${formValid ? 'search-form__button' : 'search-form__button_type_disabled'}`} disabled={!formValid}/>
+                <button
+                type="submit"
+                className={`search-form__button ${formValid ? 'search-form__button' : 'search-form__button_type_disabled'}`}
+                disabled={!formValid}
+                />
             </div>
             { (searchDataDirty && searchDataError) && <span id="search-form-input-error" className="search-form__input-error">{searchDataError}</span> }
-            <FilterCheckbox />
+            <FilterCheckbox
+            onCheckboxChecked={props.onCheckboxChecked}
+            onCheckboxChange={props.onCheckboxChange}
+            />
             <span className="search-form__line" />
         </form>
     );

@@ -1,28 +1,16 @@
 import React from 'react';
 import './MoviesCard.css';
-
 const apiUrl = 'https://api.nomoreparties.co';
 
 
 function MoviesCard(props) {
-    function handleAddFilm() {
-        props.onAddFilm({
-            country: props.movie.country,
-            director: props.movie.director,
-            duration: props.movie.duration,
-            year: props.movie.year,
-            description: props.movie.description,
-            image: `${apiUrl}${props.movie.image ? props.movie.image.url : ''}`,
-            trailer: props.movie.trailerLink,
-            thumbnail: `${apiUrl}${props.movie.image.formats.thumbnail ? props.movie.image.formats.thumbnail.url : ''}`,
-            movieId: props.movie.id,
-            nameRU: props.movie.nameRU,
-            nameEN: props.movie.nameEN
-        });
-    }
+        
+    const movieButtonClassName = (
+        `movies-card__button ${props.movie.isAlreadyAdded ? 'movies-card__button_type_already-added' : 'movies-card__button_type_add'}`
+    );
 
-    function handleDeleteFilm() {
-        props.onDeleteFilm(props.movie);
+    function handleToggleButton() {
+        props.onToggleMovie(props.movie);
     }
     
     return (
@@ -30,8 +18,8 @@ function MoviesCard(props) {
             <figure className="movies-card" key={props.movie._id}>
                 {
                     props.savedMovies
-                        ? <button type="button" className="movies-card__delete-button" onClick={handleDeleteFilm} />
-                        : <button type="button" className='movies-card__add-button' onClick={handleAddFilm}>Сохранить</button>
+                        ? <button type="button" className="movies-card__button movies-card__button_type_delete" onClick={handleToggleButton} />
+                        : <button type="button" className={movieButtonClassName} onClick={handleToggleButton} />
                 }
                 <a
                 className="movies-card__trailer-link"
@@ -39,8 +27,7 @@ function MoviesCard(props) {
                 target="_blank"
                 rel="noreferrer"
                 >
-                    <img className="movies-card__image" src=
-                    {
+                    <img className="movies-card__image" src={
                         props.savedMovies
                         ? props.movie.image
                         : `${apiUrl}${props.movie.image ? props.movie.image.url : ''}`
@@ -49,7 +36,7 @@ function MoviesCard(props) {
                 </a>
                 <figcaption className="movies-card__description-duration-container">
                     <p className="movies-card__description">{props.movie.nameRU}</p>
-                    <p className="movies-card__duration">{props.movie.duration}</p>
+                    <p className="movies-card__duration">{`${Math.floor(props.movie.duration / 60)}ч ${props.movie.duration % 60}м`}</p>
                 </figcaption>
             </figure>
         </>

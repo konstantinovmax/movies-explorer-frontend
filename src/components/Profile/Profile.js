@@ -25,6 +25,8 @@ function Profile(props) {
             setNameError('Длина имени должна составлять от 2 до 30 символов');
         } else if (!regExpEngName) {
             setNameError('Имя должно быть указано латиницей');
+        } else if (e.target.value === currentUser.name) {
+            setNameError('Заданное имя совпадает с текущим именем');
         } else {
             setNameError('');
         }
@@ -37,6 +39,8 @@ function Profile(props) {
 
         if (!regExpEmail) {
             setEmailError('Некорректный email');
+        } else if (e.target.value === currentUser.email) {
+            setEmailError('Заданный email совпадает с текущим email');
         } else {
             setEmailError('');
         }
@@ -67,12 +71,12 @@ function Profile(props) {
     }, [currentUser]);
 
     React.useEffect(() => {
-        if (nameError || emailError) {
+        if (nameError || emailError || name === currentUser.name || email === currentUser.email) {
             setFormValid(false);
         } else {
             setFormValid(true);
         }
-    }, [nameError, emailError]);
+    }, [nameError, emailError, name, email, currentUser]);
 
     return (
         <div className="profile">
@@ -89,7 +93,7 @@ function Profile(props) {
                         maxLength="30"
                         autoComplete="off"
                         required
-                        value={name}
+                        value={name || ''}
                         onChange={handleNameChange}
                         disabled={inputDisabled}
                         />
@@ -102,7 +106,7 @@ function Profile(props) {
                         className={`profile__input ${(emailDirty && emailError) ? 'profile__input_type_error' : ''}`}
                         autoComplete="off"
                         required
-                        value={email}
+                        value={email || ''}
                         onChange={handleEmailChange}
                         disabled={inputDisabled}
                         />

@@ -1,3 +1,5 @@
+import imageNotFound from '../images/image-not-found.png';
+
 class MainApi {
     constructor(config) {
         this._url = config.url;
@@ -5,94 +7,169 @@ class MainApi {
     }
 
     getUserData() {
+        const jwt = localStorage.getItem('jwt');
         return fetch(`${this._url}/users/me`, {
             method: 'GET',
-            headers: this._headers
-        }).then((res) => {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }
+        })
+        .then((res) => {
             if (res.ok) {
                 return res.json();
             }
-    
-            return Promise.reject('Произошла ошибка при загрузке данных пользователя с сервера');
+        })
+        .catch(() => {
+            return Promise.reject('Произошла ошибка при загрузке данных пользователя');
         });
     }
 
     updateUserData({ email, password, name }) {
+        const jwt = localStorage.getItem('jwt');
         return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            },
             body: JSON.stringify({
                 email: email,
                 password: password,
                 name: name
             })
-        }).then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-
+        })
+        .then((res => res.json()))
+        .catch(() => {
             return Promise.reject('Произошла ошибка при редактировании данных пользователя');
         });
     }
 
     getUserMovies() {
+        const jwt = localStorage.getItem('jwt');
         return fetch(`${this._url}/movies`, {
             method: 'GET',
-            headers: this._headers
-        }).then((res) => {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }
+        })
+        .then((res) => {
             if (res.ok) {
                 return res.json();
-            }
-    
+            } 
+        })
+        .catch(() => {
             return Promise.reject('Произошла ошибка при загрузке списка фильмов пользователя');
         });
     }
 
-    createFilm({ country, director, duration, year, description, image, trailer, thumbnail, movieId, nameRU, nameEN }) {
+    addFilm(movie) {
+        const jwt = localStorage.getItem('jwt');
         return fetch(`${this._url}/movies`, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            },
             body: JSON.stringify({
-                country: country,
-                director: director,
-                duration: duration,
-                year: year,
-                description: description,
-                image: image,
-                trailer: trailer,
-                thumbnail: thumbnail,
-                movieId: movieId,
-                nameRU: nameRU,
-                nameEN: nameEN
+                country: movie.country ? movie.country : 'Страна не указана',
+                director: movie.director ? movie.director : 'Режиссер не указан',
+                duration: movie.duration ? movie.duration : 'Продолжительность фильма не указана',
+                year: movie.year ? movie.year : 'Год не указан',
+                description: movie.description ? movie.description : 'Описание не указано',
+                image: movie.image ? `https://api.nomoreparties.co${movie.image.url}` : `${imageNotFound}`,
+                trailer: movie.trailerLink ? movie.trailerLink : 'https://me-mk.students.nomoredomains.monster/not-found',
+                thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail ? movie.image.formats.thumbnail.url : ''}` || imageNotFound,
+                movieId: movie.id,
+                nameRU: movie.nameRU ? movie.nameRU : 'Название не указано',
+                nameEN: movie.nameEN ? movie.nameEN : 'Название не указано'
             })
-        }).then((res) => {
+        })
+        .then((res) => {
             if (res.ok) {
                 return res.json();
             }
-
+        })
+        .catch(() => {
             return Promise.reject('Произошла ошибка при попытке добавить фильм');
         });
     }
 
     deleteFilm(movieId) {
+        const jwt = localStorage.getItem('jwt');
         return fetch(`${this._url}/movies/${movieId}`, {
             method: 'DELETE',
-            headers: this._headers
-        }).then((res) => {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            },
+        })
+        .then((res) => {
             if (res.ok) {
                 return res.json();
             }
-
+        })
+        .catch(() => {
             return Promise.reject('Произошла ошибка при попытке удалить фильм');
+        });
+    }
+
+    register(email, password, name) {
+        return fetch(`${this._url}/signup`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({email, password, name})
+        })
+        .then((res => res.json()))
+        .catch(() => {
+            return Promise.reject('Произошла ошибка при попытке зарегистрироваться');
+        });
+    }
+
+    login(email, password) {
+        return fetch(`${this._url}/signin`, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({email, password})
+        })
+        .then((res => res.json()))
+        .catch(() => {
+            return Promise.reject('Произошла ошибка при попытке авторизоваться');
+        });
+    }
+
+    getContent(jwt) {
+        return fetch(`${this._url}/users/me`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}`
+            }
+        })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .catch(() => {
+            return Promise.reject('Произошла ошибка при попытке проверить токен');
         });
     }
 }
 
 const mainApi = new MainApi({
-    url: 'http://localhost:3000',
+    url: 'https://api.me-mk.students.nomoredomains.monster',
     headers: {
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Accept': 'application/json',
         'Content-Type': 'application/JSON',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
     },
 });
 

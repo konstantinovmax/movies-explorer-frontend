@@ -15,7 +15,6 @@ import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-import * as auth from '../../auth';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -25,7 +24,9 @@ function App() {
   const [accessNotice, setAccessNotice] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [noticeMessage, setNoticeMessage] = React.useState('');
+  const [movieSearchError, setMovieSearchError] = React.useState('');
   const history = useHistory();
 
   function handleMobileMenuOpen() {
@@ -41,43 +42,12 @@ function App() {
     setIsInfoToolTipOpen(false);
   }
 
-  function handleUpdateUserData(newUserData) {
-    mainApi.updateUserData(newUserData)
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function handleAddFilm(userMovieInfo) {
-    mainApi.createFilm(userMovieInfo)
-      .then((newUserMovie) => {
-        setUserMovies([newUserMovie, ...userMovies]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function handleDeleteFilm(userMovie) {
-    const isOwn = userMovie.owner._id === currentUser._id;
-    mainApi.deleteFilm(userMovie._id, isOwn)
-      .then(() => {
-        const newUserMovies = userMovies.filter((m) => userMovie._id !== m._id);
-        setUserMovies(newUserMovies);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function handleRegistration(email, password, name) {
-    auth.register(email, password, name)
+    mainApi.register(email, password, name)
       .then((res) => {
-        if (res.data) {
+        if (res.successMessage) {
           setAccessNotice(true);
+          setNoticeMessage(res.successMessage);
           handleInfoToolTipOpen();
           history.push('/signin');
         } else {
@@ -92,11 +62,12 @@ function App() {
   }
 
   function handleLogin(email, password) {
-    auth.login(email, password)
+    mainApi.login(email, password)
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
           setLoggedIn(true);
+          tokenCheck();
           history.push('/movies');
         } else {
           setAccessNotice(false);
@@ -111,11 +82,11 @@ function App() {
 
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
-
     if (jwt) {
-      auth.getContent(jwt)
+      mainApi.getContent(jwt)
         .then((res) => {
           if (res) {
+            setCurrentUser(res);
             setLoggedIn(true);
             history.push('/movies');
           }
@@ -124,40 +95,135 @@ function App() {
           console.log(err);
         });
     } else {
-      return;
+      handleLogout();
     }
   }
 
+  function handleGetAllMovies() {
+    setLoading(true);
+    setMovieSearchError('');
+    const localMovies = JSON.parse(localStorage.getItem('movies'));
+    if (localMovies) {
+      setLoading(false);
+      setMovies(matchedMovies(localMovies, userMovies));
+    } else {
+      moviesApi.getAllMovies()
+        .then((res) => {
+          setLoading(false);
+          localStorage.setItem('movies', JSON.stringify(res));
+          setMovies(matchedMovies(res, userMovies));
+          setMovieSearchError('Фильмы не найдены');
+        })
+        .catch((err) => {
+          setMovieSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.');
+          setLoading(false);
+          setAccessNotice(false);
+          setNoticeMessage('Ошибка при поиске фильмов');
+          handleInfoToolTipOpen();
+          console.log(err);
+        });
+    }
+  }
+
+  function handleAddFilm(userMovieData) {
+    mainApi.addFilm(userMovieData)
+      .then((newUserMovie) => {
+        setUserMovies([newUserMovie, ...userMovies]);
+      })
+      .catch((err) => {
+        setAccessNotice(false);
+        setNoticeMessage('Не удалось сохранить фильм. Попробуйте обновить страницу и повторить попытку.');
+        handleInfoToolTipOpen();
+        console.log(err);
+      });
+  }
+
+  function handleDeleteFilm(movie) {
+    const userMovie = userMovies.find((userMovie) => userMovie.movieId === (movie.id || movie.movieId || movie._id));
+    const isOwn = userMovie.owner._id === currentUser._id;
+    mainApi.deleteFilm(userMovie._id, isOwn)
+      .then(() => {
+        const newUserMovies = userMovies.filter((userMovie) => userMovie.movieId !== (movie.id || movie.movieId || movie._id));
+        setUserMovies(newUserMovies);
+      })
+      .catch((err) => {
+        setAccessNotice(false);
+        setNoticeMessage('Не удалось удалить фильм. Попробуйте обновить страницу и повторить попытку.');
+        handleInfoToolTipOpen();
+        console.log(err);
+      });
+  }
+
+  function handleToggleMovie(movie) {
+    if (!movie.isAlreadyAdded && !movie._id) {
+      handleAddFilm(movie);
+    } else {
+      handleDeleteFilm(movie);
+    }
+  }
+
+  function handleUpdateUserData(newUserData) {
+    mainApi.updateUserData(newUserData)
+      .then((res) => {
+        if (res.email && res.name) {
+          setCurrentUser(res);
+          setAccessNotice(true);
+          setNoticeMessage('Данные пользователя успешно изменены');
+          handleInfoToolTipOpen();
+        } else {
+          setAccessNotice(false);
+          setNoticeMessage(res.message);
+          handleInfoToolTipOpen();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function handleLogout() {
-    localStorage.removeItem('jwt');
     setLoggedIn(false);
+    localStorage.clear();
     history.push('/');
   }
 
-  function handleGetAllMovies() {
-    moviesApi.getAllMovies()
-      .then((res) => {
-        setMovies(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  function matchedMovies(movies, userMovies) {
+    userMovies.forEach((userMovie) => {
+      movies[movies.findIndex((movie) => movie.id === userMovie.movieId)].isAlreadyAdded = true;
+    });
+    return movies;
   }
 
   React.useEffect(() => {
-    tokenCheck(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    tokenCheck();
+  }, [loggedIn]); // eslint-disable-line
 
   React.useEffect(() => {
-    Promise.all([mainApi.getUserData(), mainApi.getUserMovies()])
-      .then(([userData, userMovies]) => {
-        setCurrentUser(userData);
-        setUserMovies(userMovies);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (loggedIn) {
+      setLoading(true);
+      Promise.all([mainApi.getUserData(), mainApi.getUserMovies()])
+        .then(([userData, userMovies]) => {
+          setLoading(false);
+          setCurrentUser(userData);
+          setUserMovies(userMovies);
+        })
+        .catch(() => {
+          setLoading(false);
+          setMovieSearchError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.');
+        });
+    }
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    const localMovies = JSON.parse(localStorage.getItem('movies'));
+    if (localMovies) {
+      setMovies(matchedMovies(localMovies, userMovies));
+      setMovieSearchError('Ничего не найдено');
+    } else {
+      setMovies([]);
+      setMovieSearchError('Начните поиск');
+    }
+  }, [userMovies])
 
   return (
     <div className="app">
@@ -175,15 +241,19 @@ function App() {
             loggedIn={loggedIn}
             component={Movies}
             onGetMovies={handleGetAllMovies}
-            onAddFilm={handleAddFilm}
             movies={movies}
+            loading={loading}
+            onToggleMovie={handleToggleMovie}
+            noticeMessage={noticeMessage}
+            movieSearchError={movieSearchError}
             />
             <ProtectedRoute
             path="/saved-movies"
             loggedIn={loggedIn}
             component={SavedMovies}
-            onDeleteFilm={handleDeleteFilm}
             userMovies={userMovies}
+            loading={loading}
+            onToggleMovie={handleToggleMovie}
             />
             <ProtectedRoute
             path="/profile"

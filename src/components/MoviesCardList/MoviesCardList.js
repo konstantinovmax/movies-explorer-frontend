@@ -3,30 +3,39 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList(props) {
-    const [limit, setLimit] = React.useState(50);
+    const [limit, setLimit] = React.useState(4);
+
+    /* function numberOfMoviesCard() {
+        if (!props.savedMovies && window.innerWidth >= 1280) {
+            return 12
+        } else if (!props.savedMovies && window.innerWidth >= 480 && window.innerWidth < 1280) {
+            return 8
+        } else if (!props.savedMovies && window.innerWidth < 480) {
+            return 5
+        }
+    } */
 
     function showMoreMovies() {
-        setLimit(limit + 3);
+        setLimit(limit + 4);
     }
 
     return (
         <section className="movies-card-list">
             <div className="movies-card-list__grid">
-                {props.movies.slice(0, limit).map((movie) => (
+                {props.movies.length > 0 && props.movies.slice(0, limit).map((movie, i) => (
                     <MoviesCard
                     movie={movie}
-                    movies={props.movies}
-                    key={movie._id}
+                    key={i}
                     savedMovies={props.savedMovies}
-                    onAddFilm={props.onAddFilm}
-                    onDeleteFilm={props.onDeleteFilm}
+                    onToggleMovie={props.onToggleMovie}
                     />
                 ))}
             </div>
+            {props.savedMovies ? props.movies.length < 1 && <p className="movies-card-list__message">Нет добавленных фильмов</p> : props.movies.length < 1 && <p className="movies-card-list__message">{props.movieSearchError}</p>}
             {
-            props.savedMovies
-            ? ''
-            : props.movies.length >= 3 && props.movies.length <= 100 ? <button className="movies-card-list__more-movies-button" onClick={showMoreMovies}>Ещё</button> : ''
+                props.savedMovies
+                ? ''
+                : (props.movies.length > 0) && (props.movies.length > limit) ? <button className="movies-card-list__more-movies-button" onClick={showMoreMovies}>Ещё</button> : ''
             }
         </section>
     );

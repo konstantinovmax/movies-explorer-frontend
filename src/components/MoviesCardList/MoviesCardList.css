@@ -1,11 +1,13 @@
 .movies-card-list {
     padding: 80px 70px 80px 70px;
+    
 }
 
 .movies-card-list__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 58px 30px;
+    position: relative;
 }
 
 .movies-card-list__more-movies-button {
@@ -29,6 +31,17 @@
     transition: ease .3s;
 }
 
+.movies-card-list__message {
+    margin: 0;
+    padding-top: 80px;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+    color: #fff;
+}
+
 @media screen and (max-width: 1100px) {
     .movies-card-list__grid {
         gap: 47px 30px;
@@ -41,7 +54,7 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
     .movies-card-list__grid {
         grid-template-columns: 1fr;
         gap: 39px;
