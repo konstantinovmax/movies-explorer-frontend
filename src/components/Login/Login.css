@@ -16,6 +16,11 @@
     height: 38px;
 }
 
+.login__logo:hover {
+    opacity: 0.7;
+    transition: ease .3s;
+}
+
 .login__form {
     margin: 40px 0 0 0;
     width: 396px;
@@ -57,8 +62,21 @@
     color: #fff;
 }
 
+.login__input_type_error {
+    color: #EE3465;
+}
+
 .login__input:focus {
     box-shadow: 0 0 0.5pt 0.5pt #4285F4;
+}
+
+.login__input-error {
+    margin: 10px 0 0 0;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    color: #EE3465;
 }
 
 .login__submit-button {
@@ -80,6 +98,16 @@
 .login__submit-button:hover {
     opacity: 0.8;
     transition: ease .3s;
+}
+
+.login__submit-button_type_disabled {
+    background-color: #5F5F5F;
+    cursor: default;
+    color: #C2C2C2;
+}
+
+.login__submit-button_type_disabled:hover {
+    opacity: 1;
 }
 
 .login__question-container {
