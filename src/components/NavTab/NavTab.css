@@ -1,10 +1,10 @@
 .nav-tab {
     margin: 0;
     display: flex;
-    gap: 10px;
 }
 
 .nav-tab__link {
+    margin: 0 10px 0 0;
     width: 96px;
     height: 36px;
     display: flex;
@@ -26,9 +26,13 @@
     transition: ease .3s;
 }
 
+.nav-tab__link:last-of-type {
+    margin: 0;
+}
+
 @media screen and (max-width: 510px) {
-    .nav-tab {
-        gap: 6px;
+    .nav-tab__link {
+        margin: 0 6px 0 0;
     }
 }
 

@@ -59,7 +59,6 @@
     padding: 0;
     list-style: none;
     display: flex;
-    gap: 20px;
 }
 
 .about-me__link {
@@ -69,6 +68,10 @@
     line-height: 17px;
     text-decoration: none;
     color: #fff;
+}
+
+.about-me__link_type_first {
+    margin: 0 20px 0 0;
 }
 
 .about-me__link:hover {
@@ -127,7 +130,6 @@
 @media screen and (max-width: 840px) {
     .about-me__links-container {
         margin: 87px 0 0 0;
-        gap: 20px;
     }
 }
 
@@ -213,6 +215,11 @@
 @media screen and (max-width: 510px) {
     .about-me__links-container {
         margin: 40px 0 0 0;
-        gap: 26px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .about-me__link_type_first {
+        margin: 0 26px 0 0;
     }
 }
