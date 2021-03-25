@@ -15,6 +15,6 @@
 ---
 
 **Инструкция по развертыванию проекта**
-Клонировать репозиторий командой: `git clone https://github.com/konstantinovmax/movies-explorer-frontend.git`
-Установить зависимости: `npm i`
-Запустить тестовую сборку на локальном сервере: `npm start`
+1. Клонировать репозиторий командой: `git clone https://github.com/konstantinovmax/movies-explorer-frontend.git`
+2. Установить зависимости: `npm i`
+3. Запустить тестовую сборку на локальном сервере: `npm start`
