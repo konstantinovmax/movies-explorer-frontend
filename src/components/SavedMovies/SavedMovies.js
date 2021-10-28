@@ -1,54 +1,67 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 
-function SavedMovies(props) {
-  const [searchData, setSearchData] = React.useState('');
-  const [checkboxChecked, setCheckboxChecked] = React.useState(false);
-  const [filteredMovies, setFilteredMovies] = React.useState([]);
-  const filteredFoundMovies = searchMovieFilter(props.userMovies, searchData);
-  const filteredFoundMoviesWithDuration = movieDurationFilter(filteredFoundMovies, checkboxChecked);
-  
-  function searchMovieFilter(movies, searchQuery) {
-    return movies.filter((movie) => movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase()));
+const SavedMovies = ({
+  userMovies,
+  isLoading,
+  movieSearchError,
+  onToggleMovie,
+}) => {
+  const [searchData, setSearchData] = useState('');
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+
+  const searchMovieFilter = (movies, searchQuery) => {
+    return movies.filter((movie) =>
+      movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   };
 
-  function movieDurationFilter(movies, checked) {
-    return movies.filter((movie) => checked ? movie.duration <= 40 : Number);
-  }
+  const movieDurationFilter = (movies, checked) => {
+    return movies.filter((movie) => (checked ? movie.duration <= 40 : Number));
+  };
 
-  function handleSearchData(searchQuery) {
+  const filteredFoundMovies = searchMovieFilter(userMovies, searchData);
+
+  const filteredFoundMoviesWithDuration = movieDurationFilter(
+    filteredFoundMovies,
+    isCheckboxChecked
+  );
+
+  const handleSearchData = (searchQuery) => {
     setSearchData(searchQuery);
-  }
-  
-  function handleCheckboxChange() {
-    setCheckboxChecked(!checkboxChecked);
-  }
-  
-  React.useEffect(() => {
+  };
+
+  const handleCheckboxChange = () => {
+    setIsCheckboxChecked(!isCheckboxChecked);
+  };
+
+  useEffect(() => {
     setFilteredMovies(filteredFoundMoviesWithDuration);
-  }, [props.userMovies, searchData, checkboxChecked]); // eslint-disable-line
+  }, [userMovies, searchData, isCheckboxChecked]);
 
   return (
     <div className="saved-movies">
       <SearchForm
-      onSearchSubmit={handleSearchData}
-      onCheckboxChecked={checkboxChecked}
-      onCheckboxChange={handleCheckboxChange}
+        onSearchSubmit={handleSearchData}
+        onCheckboxChecked={isCheckboxChecked}
+        onCheckboxChange={handleCheckboxChange}
       />
-      {
-        props.loading
-        ? <Preloader />
-        : <MoviesCardList
-          savedMovies={true}
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
           movies={filteredMovies}
-          onToggleMovie={props.onToggleMovie}
+          savedMovies={true}
+          onToggleMovie={onToggleMovie}
+          movieSearchError={movieSearchError}
         />
-      }
+      )}
     </div>
   );
-}
+};
 
 export default SavedMovies;
