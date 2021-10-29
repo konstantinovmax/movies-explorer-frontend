@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0 0 23px 0;
   border-bottom: 1px solid rgba(218, 218, 218, 1);
-  font-family: "Inter", "Arial", sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 22px;
   font-weight: 400;
   line-height: 27px;
@@ -29,7 +29,7 @@
 
 .about-me__name {
   margin: 0;
-  font-family: "Inter", "Arial", sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 50px;
   font-weight: 400;
   line-height: 58px;
@@ -38,7 +38,7 @@
 
 .about-me__profession {
   margin: 18px 0 0 0;
-  font-family: "Inter", "Arial", sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
@@ -47,7 +47,7 @@
 
 .about-me__description {
   margin: 26px 0 0 0;
-  font-family: "Inter", "Arial", sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
@@ -62,7 +62,7 @@
 }
 
 .about-me__link {
-  font-family: "Inter", "Arial", sans-serif;
+  font-family: 'Inter', 'Arial', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
