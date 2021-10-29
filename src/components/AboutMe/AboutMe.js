@@ -1,15 +1,15 @@
-import './AboutMe.css';
+import styles from './AboutMe.module.scss';
 import studentPhoto from '../../images/aboutMePhoto.jpg';
 
 const AboutMe = () => {
   return (
-    <section id="about-me-id" className="about-me">
-      <h2 className="about-me__section-title">Студент</h2>
-      <div className="about-me__content-container">
-        <article className="about-me__text-container">
-          <h3 className="about-me__name">Максим</h3>
-          <p className="about-me__profession">Фронтенд-разработчик, 28 лет</p>
-          <p className="about-me__description">
+    <section className={styles.root}>
+      <h2 className={styles.title}>Студент</h2>
+      <div className={styles.contentContainer}>
+        <article className={styles.textContainer}>
+          <h3 className={styles.name}>Максим</h3>
+          <p className={styles.profession}>Фронтенд-разработчик, 28 лет</p>
+          <p className={styles.description}>
             Почему я решил стать разработчиком? Во время работы я
             взаимодействовал с разработчиками в рамках проектной деятельности в
             роли бизнес и веб-аналитика. Для понимания процесса разработки мне
@@ -20,11 +20,11 @@ const AboutMe = () => {
             выбрал направление Фронтенд, потому что мне нравится работать с
             интерфейсом и видеть результат своей работы.
           </p>
-          <ul className="about-me__links-container">
+          <ul className={styles.linksContainer}>
             <li>
               <a
                 href="https://www.facebook.com/konstantinovmax"
-                className="about-me__link about-me__link_type_first"
+                className={styles.link}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -34,7 +34,7 @@ const AboutMe = () => {
             <li>
               <a
                 href="https://github.com/konstantinovmax"
-                className="about-me__link about-me__link_type_second"
+                className={styles.link}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -43,11 +43,7 @@ const AboutMe = () => {
             </li>
           </ul>
         </article>
-        <img
-          className="about-me__photo"
-          src={studentPhoto}
-          alt="Фото студента"
-        />
+        <img className={styles.photo} src={studentPhoto} alt="Фото студента" />
       </div>
     </section>
   );
