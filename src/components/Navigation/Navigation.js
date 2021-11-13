@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import './Navigation.css';
+import styles from './Navigation.module.scss';
+import classNames from 'classnames';
 
 const Navigation = ({ isOpen, onClose }) => {
   const handleClickLayoutMenuClose = (e) => {
@@ -10,40 +11,39 @@ const Navigation = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <div className="navigation">
+      <div className={styles.root}>
         <div
-          className={`navigation__blur ${
-            isOpen && 'navigation__blur_type_is-open'
-          }`}
+          className={classNames(styles.blur, isOpen && styles.blurOpened)}
           onClick={handleClickLayoutMenuClose}
         />
         <div
-          className={`navigation__menu-container-mobile ${
-            isOpen && 'navigation__menu-container-mobile_type_is-open'
-          }`}
+          className={classNames(
+            styles.mobileMenuContainer,
+            isOpen && styles.mobileMenuContainerOpened
+          )}
         >
-          <nav className="navigation__menu-mobile">
+          <nav className={styles.mobileMenu}>
             <NavLink
               exact
               to="/"
-              className="navigation__menu-mobile-link"
-              activeClassName="navigation__menu-mobile-link_type_active"
+              className={styles.mobileMenuLink}
+              activeClassName={styles.mobileMenuLinkActive}
               onClick={onClose}
             >
               Главная
             </NavLink>
             <NavLink
               to="/movies"
-              className="navigation__menu-mobile-link"
-              activeClassName="navigation__menu-mobile-link_type_active"
+              className={styles.mobileMenuLink}
+              activeClassName={styles.mobileMenuLinkActive}
               onClick={onClose}
             >
               Фильмы
             </NavLink>
             <NavLink
               to="/saved-movies"
-              className="navigation__menu-mobile-link"
-              activeClassName="navigation__menu-mobile-link_type_active"
+              className={styles.mobileMenuLink}
+              activeClassName={styles.mobileMenuLinkActive}
               onClick={onClose}
             >
               Сохранённые фильмы
@@ -51,27 +51,27 @@ const Navigation = ({ isOpen, onClose }) => {
           </nav>
           <NavLink
             to="/profile"
-            className="navigation__profile-container-link"
+            className={styles.profileContainerLink}
             onClick={onClose}
           >
-            <p className="navigation__user-data">Аккаунт</p>
-            <div className="navigation__auth-pic" />
+            <p className={styles.userData}>Аккаунт</p>
+            <div className={styles.userIcon} />
           </NavLink>
         </div>
       </div>
 
-      <nav className="navigation__movies-container">
+      <nav className={styles.moviesContainer}>
         <NavLink
           to="/movies"
-          className="navigation__movies-link"
-          activeClassName="navigation__movies-link_type_active"
+          className={styles.moviesLink}
+          activeClassName={styles.moviesLinkActive}
         >
           Фильмы
         </NavLink>
         <NavLink
           to="/saved-movies"
-          className="navigation__movies-link"
-          activeClassName="navigation__movies-link_type_active"
+          className={styles.moviesLink}
+          activeClassName={styles.moviesLinkActive}
         >
           Сохранённые фильмы
         </NavLink>

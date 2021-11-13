@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import styles from './Register.module.scss';
 import { Link } from 'react-router-dom';
-import './Register.css';
+import classNames from 'classnames';
 import projectLogo from '../../images/headerLogo.svg';
 
 const Register = ({ onRegister }) => {
@@ -93,25 +94,26 @@ const Register = ({ onRegister }) => {
   }, [emailError, passwordError, nameError]);
 
   return (
-    <div className="register">
-      <div className="register__container">
+    <div className={styles.root}>
+      <div className={styles.container}>
         <Link to="/">
           <img
-            className="register__logo"
+            className={styles.logo}
             src={projectLogo}
             alt="Логотип сервиса Movies Explorer"
           />
         </Link>
-        <form className="register__form" onSubmit={handleSubmit}>
-          <h1 className="register__title">Добро пожаловать!</h1>
-          <p className="register__input-name">Имя</p>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <h1 className={styles.title}>Добро пожаловать!</h1>
+          <p className={styles.inputName}>Имя</p>
           <input
             id="input-user-name"
             name="name"
             type="text"
-            className={`register__input ${
-              isNameDirty && nameError ? 'register__input_type_error' : ''
-            }`}
+            className={classNames(
+              styles.input,
+              isNameDirty && nameError ? styles.errorColor : ''
+            )}
             placeholder="Max"
             autoComplete="off"
             minLength={2}
@@ -122,18 +124,19 @@ const Register = ({ onRegister }) => {
             onBlur={blurHandler}
           />
           {isNameDirty && nameError && (
-            <span id="register-input-error" className="register__input-error">
+            <span id="register-input-error" className={styles.inputError}>
               {nameError}
             </span>
           )}
-          <p className="register__input-name">E-mail</p>
+          <p className={styles.inputName}>E-mail</p>
           <input
             id="input-user-email"
             name="email"
             type="email"
-            className={`register__input ${
-              isEmailDirty && emailError ? 'register__input_type_error' : ''
-            }`}
+            className={classNames(
+              styles.input,
+              isEmailDirty && emailError ? styles.errorColor : ''
+            )}
             placeholder="pochta@yandex.ru"
             autoComplete="off"
             pattern="^([\w.*-]+@([\w-]+\.)+[\w-]{2,4})?$"
@@ -143,20 +146,19 @@ const Register = ({ onRegister }) => {
             onBlur={blurHandler}
           />
           {isEmailDirty && emailError && (
-            <span id="register-input-error" className="register__input-error">
+            <span id="register-input-error" className={styles.inputError}>
               {emailError}
             </span>
           )}
-          <p className="register__input-name">Пароль</p>
+          <p className={styles.inputName}>Пароль</p>
           <input
             id="input-user-password"
             name="password"
             type="password"
-            className={`register__input ${
-              isPasswordDirty && passwordError
-                ? 'register__input_type_error'
-                : ''
-            }`}
+            className={classNames(
+              styles.input,
+              isPasswordDirty && passwordError ? styles.errorColor : ''
+            )}
             placeholder="Минимум 8 символов"
             autoComplete="off"
             minLength={8}
@@ -167,24 +169,23 @@ const Register = ({ onRegister }) => {
             onBlur={blurHandler}
           />
           {isPasswordDirty && passwordError && (
-            <span id="register-input-error" className="register__input-error">
+            <span id="register-input-error" className={styles.inputError}>
               {passwordError}
             </span>
           )}
           <button
             type="submit"
-            className={`register__submit-button ${
-              isFormValid
-                ? 'register__submit-button'
-                : 'register__submit-button_type_disabled'
-            }`}
+            className={classNames(
+              styles.submitButton,
+              isFormValid ? styles.submitButton : styles.submitButtonDisabled
+            )}
             disabled={!isFormValid}
           >
             Зарегистрироваться
           </button>
-          <div className="register__question-container">
-            <p className="register__question-text">Уже зарегистрированы?</p>
-            <Link to="/signin" className="register__link-to-signin">
+          <div className={styles.questionContainer}>
+            <p className={styles.questionText}>Уже зарегистрированы?</p>
+            <Link to="/signin" className={styles.link}>
               Войти
             </Link>
           </div>

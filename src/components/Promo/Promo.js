@@ -1,10 +1,10 @@
-import './Promo.css';
+import styles from './Promo.module.scss';
 import NavTab from '../NavTab/NavTab';
 
 const Promo = () => {
   return (
-    <section className="promo">
-      <h1 className="promo__title">
+    <section className={styles.root}>
+      <h1 className={styles.title}>
         Учебный проект студента факультета Веб-разработки.
       </h1>
       <NavTab />

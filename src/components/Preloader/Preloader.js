@@ -1,10 +1,10 @@
-import './Preloader.css';
+import styles from './Preloader.module.scss';
 
 const Preloader = () => {
   return (
-    <div className="preloader">
-      <div className="preloader__container">
-        <span className="preloader__round" />
+    <div className={styles.root}>
+      <div className={styles.container}>
+        <span className={styles.round} />
       </div>
     </div>
   );

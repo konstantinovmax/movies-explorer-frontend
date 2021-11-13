@@ -1,18 +1,18 @@
-import './FilterCheckbox.css';
+import styles from './FilterCheckbox.module.scss';
 
 const FilterCheckbox = ({ onCheckboxChecked, onCheckboxChange }) => {
   return (
-    <div className="filter-checkbox">
-      <label className="filter-checkbox__container">
+    <div className={styles.root}>
+      <label className={styles.container}>
         <input
-          className="filter-checkbox__input"
+          className={styles.input}
           type="checkbox"
           checked={onCheckboxChecked}
           onChange={onCheckboxChange}
         />
-        <span className="filter-checkbox__slider" />
+        <span className={styles.slider} />
       </label>
-      <p className="filter-checkbox__text">Короткометражки</p>
+      <p className={styles.text}>Короткометражки</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@keyframes preloader-inside-white {
+@keyframes insideWhite {
   0% {
     -webkit-transform: scale(0, 0);
     -moz-transform: scale(0, 0);
@@ -15,7 +15,7 @@
   }
 }
 
-@keyframes preloader-inside-red {
+@keyframes insideBlue {
   0% {
     -webkit-transform: scale(0, 0);
     -moz-transform: scale(0, 0);
@@ -39,19 +39,19 @@
   }
 }
 
-.preloader {
+.root {
   z-index: 10;
   padding-top: 79px;
   margin: auto;
 }
 
-.preloader__container {
+.container {
   width: 100px;
   height: 100px;
   position: relative;
 }
 
-.preloader__round {
+.round {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -59,26 +59,26 @@
   left: 0;
   background: #4285f4;
   border-radius: 50px;
-}
 
-.preloader__round::after,
-.preloader__round::before {
-  content: '';
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50px;
-}
+  &::before,
+  &::after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50px;
+  }
 
-.preloader__round::after {
-  background: white;
-  animation: preloader-inside-white 1s ease-in-out infinite;
-}
+  &::before {
+    z-index: 10;
+    background: #4285f4;
+    animation: insideBlue 1s ease-in-out infinite;
+  }
 
-.preloader__round::before {
-  z-index: 10;
-  background: #4285f4;
-  animation: preloader-inside-red 1s ease-in-out infinite;
+  &::after {
+    background: white;
+    animation: insideWhite 1s ease-in-out infinite;
+  }
 }

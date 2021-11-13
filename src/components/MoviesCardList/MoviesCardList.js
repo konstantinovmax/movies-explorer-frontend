@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './MoviesCardList.css';
+import styles from './MoviesCardList.module.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = ({
@@ -15,8 +15,8 @@ const MoviesCardList = ({
   };
 
   return (
-    <section className="movies-card-list">
-      <div className="movies-card-list__grid">
+    <section className={styles.root}>
+      <div className={styles.grid}>
         {movies.length > 0 &&
           movies
             .slice(0, limit)
@@ -31,18 +31,15 @@ const MoviesCardList = ({
       </div>
       {savedMovies
         ? movies.length < 1 && (
-            <p className="movies-card-list__message">Нет добавленных фильмов</p>
+            <p className={styles.message}>Нет добавленных фильмов</p>
           )
         : movies.length < 1 && (
-            <p className="movies-card-list__message">{movieSearchError}</p>
+            <p className={styles.message}>{movieSearchError}</p>
           )}
       {savedMovies ? (
         ''
       ) : movies.length > 0 && movies.length > limit ? (
-        <button
-          className="movies-card-list__more-movies-button"
-          onClick={showMoreMovies}
-        >
+        <button className={styles.button} onClick={showMoreMovies}>
           Ещё
         </button>
       ) : (

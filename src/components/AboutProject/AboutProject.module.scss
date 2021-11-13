@@ -1,0 +1,174 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 110px 70px 110px 70px;
+
+  @media (max-width: 840px) {
+    padding: 90px 50px 90px 50px;
+  }
+
+  @media (max-width: 510px) {
+    padding: 70px 18px 70px 18px;
+  }
+}
+
+.title {
+  margin: 0;
+  padding: 0 0 23px 0;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 27px;
+  color: #fff;
+
+  @media (max-width: 510px) {
+    padding: 0 0 28px 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.twoColumns {
+  margin: 70px 0 0 0;
+  display: flex;
+
+  @media (max-width: 510px) {
+    margin: 60px 0 0 0;
+    flex-direction: column;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px 0 0;
+
+  @media (max-width: 840px) {
+    margin: 0 30px 0 0;
+  }
+
+  @media (max-width: 510px) {
+    margin: 0 0 56px 0;
+  }
+
+  &:last-of-type {
+    margin: 0;
+  }
+}
+
+.columnTitle {
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #fff;
+
+  @media (max-width: 510px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.columnText {
+  margin: 26px 0 0 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #fff;
+
+  @media (max-width: 840px) {
+    margin: 22px 0 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  @media (max-width: 510px) {
+    margin: 16px 0 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+.progressBarContainer {
+  display: flex;
+}
+
+.progressBarContainerFirst {
+  margin: 110px 0 0 0;
+}
+
+.progressBar {
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 510px) {
+    height: 35px;
+  }
+}
+
+.progressBarBackend {
+  width: 20%;
+  background-color: #3ddc84;
+
+  @media (max-width: 510px) {
+    width: 35%;
+    background-color: #3ddc84;
+  }
+}
+
+.progressBarBackendDescription {
+  width: 20%;
+
+  @media (max-width: 510px) {
+    width: 35%;
+  }
+}
+
+.progressBarFrontend {
+  width: 80%;
+  background-color: #303030;
+
+  @media (max-width: 510px) {
+    width: 65%;
+    background-color: #303030;
+  }
+}
+
+.progressBarFrontendDescription {
+  width: 80%;
+
+  @media (max-width: 510px) {
+    width: 65%;
+  }
+}
+
+.progressBarText {
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #fff;
+
+  @media (max-width: 510px) {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
+.progressBarTextBlack {
+  color: #000;
+}
+
+.progressBarTextWhite {
+  color: #fff;
+}
+
+.progressBarTextGrey {
+  color: #8b8b8b;
+}

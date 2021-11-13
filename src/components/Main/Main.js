@@ -1,4 +1,4 @@
-import './Main.css';
+import styles from './Main.module.scss';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -7,7 +7,7 @@ import Portfolio from '../Portfolio/Portfolio';
 
 const Main = () => {
   return (
-    <div className="main">
+    <div className={styles.main}>
       <Promo />
       <AboutProject />
       <Techs />

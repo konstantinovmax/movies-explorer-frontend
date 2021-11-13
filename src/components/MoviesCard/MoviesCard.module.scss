@@ -1,10 +1,10 @@
-.movies-card {
+.root {
   margin: 0;
   box-sizing: border-box;
   position: relative;
 }
 
-.movies-card__button {
+.button {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -14,14 +14,14 @@
   outline: none;
   cursor: pointer;
   border-radius: 50%;
+
+  &:hover {
+    opacity: 0.8;
+    transition: ease 0.3s;
+  }
 }
 
-.movies-card__button:hover {
-  opacity: 0.8;
-  transition: ease 0.3s;
-}
-
-.movies-card__button_type_add {
+.addButton {
   width: 72px;
   border-radius: 30px;
   background-color: #313131;
@@ -30,26 +30,26 @@
   background-position: center;
 }
 
-.movies-card__button_type_already-added {
+.alreadyAddedButton {
   background-color: #ee3465;
   background-image: url(../../images/already-added-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.movies-card__button_type_delete {
+.deleteButton {
   background-color: #313131;
   background-image: url(../../images/delete-button-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.movies-card__trailer-link {
+.link {
   text-decoration: none;
   color: #fff;
 }
 
-.movies-card__image {
+.image {
   width: 100%;
   height: 201px;
   object-fit: cover;
@@ -57,23 +57,36 @@
   cursor: pointer;
 }
 
-.movies-card__description-duration-container {
+.container {
   margin: 14px 14px 0 14px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media screen and (max-width: 840px) {
+    margin: 25px 0 0 0;
+  }
+
+  @media screen and (max-width: 510px) {
+    margin: 16px 0 0 0;
+  }
 }
 
-.movies-card__description {
+.description {
   margin: 0;
   font-family: 'Inter', 'Arial', sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
   color: #fff;
+
+  @media screen and (max-width: 510px) {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
-.movies-card__duration {
+.duration {
   margin: 0;
   width: 52px;
   height: 18px;
@@ -87,23 +100,4 @@
   font-weight: 400;
   line-height: 10px;
   color: #8b8b8b;
-}
-
-@media screen and (max-width: 840px) {
-  .movies-card__description-duration-container {
-    margin: 25px 0 0 0;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .movies-card__description {
-    font-size: 12px;
-    line-height: 15px;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .movies-card__description-duration-container {
-    margin: 16px 0 0 0;
-  }
 }

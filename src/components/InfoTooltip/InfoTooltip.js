@@ -1,4 +1,5 @@
-import './InfoTooltip.css';
+import styles from './InfoTooltip.module.scss';
+import classNames from 'classnames';
 import successfulAccessImage from '../../images/infoTooltipDone.png';
 import failureAccessImage from '../../images/infoTooltipDenied.png';
 
@@ -21,21 +22,21 @@ const InfoTooltip = ({ noticeMessage, onClose, isOpen, isAccessNotice }) => {
 
   return (
     <div
-      className={`modal modal_type_signup-info ${isOpen && 'modal_is-open'}`}
+      className={classNames(styles.root, isOpen && styles.visible)}
       onClick={handleClickLayoutMenuClose}
     >
-      <div className="modal__container modal__container_type_signup-info">
+      <div className={classNames(styles.container, styles.containerInfo)}>
         <button
           type="reset"
-          className="modal__close-button modal__close-button_type-signup-info"
+          className={classNames(styles.closeButton, styles.closeButtonInfo)}
           onClick={onClose}
         />
         <img
-          className="modal__access-status"
+          className={styles.accessStatus}
           src={isAccessNotice ? successfulAccessImage : failureAccessImage}
           alt={isAccessNotice ? noticeImageAlt.success : noticeImageAlt.fail}
         />
-        <h2 className="modal__title">
+        <h2 className={styles.title}>
           {isAccessNotice ? noticeText.success : noticeText.fail}
         </h2>
       </div>

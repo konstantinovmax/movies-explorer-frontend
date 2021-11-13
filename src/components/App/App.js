@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import styles from './App.module.scss';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
@@ -249,9 +249,9 @@ const App = () => {
   }, [userMovies]);
 
   return (
-    <div className="app">
+    <div className={styles.root}>
       <CurrentUserContext.Provider value={currentUser}>
-        <div className="app__content">
+        <div className={styles.content}>
           <Header
             isLoggedIn={isLoggedIn}
             isOpen={isMobileMenuOpen}
