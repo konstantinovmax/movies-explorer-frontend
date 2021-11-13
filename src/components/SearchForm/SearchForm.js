@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import './SearchForm.css';
+import styles from './SearchForm.module.scss';
+import classNames from 'classnames';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 const SearchForm = ({
@@ -49,16 +50,15 @@ const SearchForm = ({
   }, [searchDataError, searchData]);
 
   return (
-    <form className="search-form" onSubmit={handleSubmit}>
-      <div className="search-form__container">
+    <form className={styles.root} onSubmit={handleSubmit}>
+      <div className={styles.container}>
         <input
           type="text"
           name="search"
-          className={`search-form__input ${
-            isSearchDataDirty && searchDataError
-              ? 'search-form__input_type_error'
-              : ''
-          }`}
+          className={classNames(
+            styles.input,
+            isSearchDataDirty && searchDataError ? styles.errorColor : ''
+          )}
           placeholder="Введите запрос"
           minLength={1}
           maxLength={30}
@@ -70,16 +70,15 @@ const SearchForm = ({
         />
         <button
           type="submit"
-          className={`search-form__button ${
-            isFormValid
-              ? 'search-form__button'
-              : 'search-form__button_type_disabled'
-          }`}
+          className={classNames(
+            styles.button,
+            isFormValid ? styles.button : styles.disabledButton
+          )}
           disabled={!isFormValid}
         />
       </div>
       {isSearchDataDirty && searchDataError && (
-        <span id="search-form-input-error" className="search-form__input-error">
+        <span id="search-form-input-error" className={styles.inputError}>
           {searchDataError}
         </span>
       )}
@@ -87,7 +86,7 @@ const SearchForm = ({
         onCheckboxChecked={onCheckboxChecked}
         onCheckboxChange={onCheckboxChange}
       />
-      <span className="search-form__line" />
+      <span className={styles.line} />
     </form>
   );
 };

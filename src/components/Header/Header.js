@@ -1,6 +1,7 @@
-import './Header.css';
+import styles from './Header.module.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import Navigation from '../Navigation/Navigation';
 import projectLogo from '../../images/headerLogo.svg';
 
@@ -9,59 +10,64 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
     <Switch>
       <Route exact path="/">
         {isLoggedIn ? (
-          <header className="header header_type_grid">
-            <div className="header__grid-wrap header__grid-wrap_type_start">
+          <header className={classNames(styles.root, styles.grid)}>
+            <div className={classNames(styles.gridWrap, styles.gridWrapStart)}>
               {' '}
               <Link to="/">
                 <img
-                  className="header__logo"
+                  className={styles.logo}
                   src={projectLogo}
                   alt="Логотип сервиса Movies Explorer"
                 />
               </Link>
             </div>
             <Navigation isOpen={isOpen} onClose={onClose} />
-            <div className="header__grid-wrap header__grid-wrap_type_end">
+            <div className={classNames(styles.gridWrap, styles.gridWrapEnd)}>
               {' '}
               <Link
                 to="/profile"
-                className="header__auth-container header__auth-container_type_hide header__auth-container_type_profile"
+                className={classNames(
+                  styles.authContainer,
+                  styles.authContainerHidden,
+                  styles.authContainerProfile
+                )}
               >
-                <p className="header__user-data">Аккаунт</p>
-                <div className="header__auth-pic" />
+                <p className={styles.userData}>Аккаунт</p>
+                <div className={styles.userIcon} />
               </Link>
             </div>
             <button
               type="button"
-              className="header__menu-burger-container"
+              className={styles.hamburgerMenuContainer}
               onClick={isOpen ? onClose : onOpenMobileMenu}
             >
               <span
-                className={`header__menu-burger-button ${
-                  isOpen && 'header__menu-burger-button_type_close'
-                }`}
+                className={classNames(
+                  styles.button,
+                  isOpen && styles.closeButton
+                )}
               />
             </button>
           </header>
         ) : (
-          <header className="header">
+          <header className={styles.root}>
             <Link to="/">
               <img
-                className="header__logo"
+                className={styles.logo}
                 src={projectLogo}
                 alt="Логотип сервиса Movies Explorer"
               />
             </Link>
-            <nav className="header__auth-container">
+            <nav className={styles.authContainer}>
               <Link
                 to="/signup"
-                className="header__auth-link header__auth-link_type_signup"
+                className={classNames(styles.link, styles.linkSignUp)}
               >
                 Регистрация
               </Link>
               <Link
                 to="/signin"
-                className="header__auth-link header__auth-link_type_signin"
+                className={classNames(styles.link, styles.linkSignIn)}
               >
                 Войти
               </Link>
@@ -70,37 +76,42 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
         )}
       </Route>
       <Route path={['/movies', '/saved-movies', '/profile']}>
-        <header className="header header_type_grid">
-          <div className="header__grid-wrap header__grid-wrap_type_start">
+        <header className={classNames(styles.root, styles.grid)}>
+          <div className={classNames(styles.gridWrap, styles.gridWrapStart)}>
             {' '}
             <Link to="/">
               <img
-                className="header__logo"
+                className={styles.logo}
                 src={projectLogo}
                 alt="Логотип сервиса Movies Explorer"
               />
             </Link>
           </div>
           <Navigation isOpen={isOpen} onClose={onClose} />
-          <div className="header__grid-wrap header__grid-wrap_type_end">
+          <div className={classNames(styles.gridWrap, styles.gridWrapEnd)}>
             {' '}
             <Link
               to="/profile"
-              className="header__auth-container header__auth-container_type_hide header__auth-container_type_profile"
+              className={classNames(
+                styles.authContainer,
+                styles.authContainerHidden,
+                styles.authContainerProfile
+              )}
             >
-              <p className="header__user-data">Аккаунт</p>
-              <div className="header__auth-pic" />
+              <p className={styles.userData}>Аккаунт</p>
+              <div className={styles.userIcon} />
             </Link>
           </div>
           <button
             type="button"
-            className="header__menu-burger-container"
+            className={styles.hamburgerMenuContainer}
             onClick={isOpen ? onClose : onOpenMobileMenu}
           >
             <span
-              className={`header__menu-burger-button ${
-                isOpen && 'header__menu-burger-button_type_close'
-              }`}
+              className={classNames(
+                styles.button,
+                isOpen && styles.closeButton
+              )}
             />
           </button>
         </header>

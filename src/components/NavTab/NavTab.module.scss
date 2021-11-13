@@ -1,9 +1,9 @@
-.nav-tab {
+.root {
   margin: 0;
   display: flex;
 }
 
-.nav-tab__link {
+.link {
   margin: 0 10px 0 0;
   width: 96px;
   height: 36px;
@@ -19,28 +19,21 @@
   text-align: center;
   text-decoration: none;
   color: #fff;
-}
 
-.nav-tab__link:hover {
-  opacity: 0.7;
-  transition: ease 0.3s;
-}
-
-.nav-tab__link:last-of-type {
-  margin: 0;
-}
-
-@media screen and (max-width: 510px) {
-  .nav-tab__link {
+  @media (max-width: 510px) {
     margin: 0 6px 0 0;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .nav-tab__link {
     width: 82px;
     height: 26px;
     border-radius: 6px;
     font-size: 10px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    transition: ease 0.3s;
+  }
+
+  &:last-of-type {
+    margin: 0;
   }
 }

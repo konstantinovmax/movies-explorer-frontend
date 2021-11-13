@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
-import './Movies.css';
+import { useState, useEffect } from 'react';
+import styles from './Movies.module.scss';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
@@ -50,7 +50,7 @@ const Movies = ({
   }, [movies, searchData, isCheckboxChecked]);
 
   return (
-    <div className="movies">
+    <div className={styles.movies}>
       <SearchForm
         onSearchSubmit={handleSearchData}
         onCheckboxChecked={isCheckboxChecked}

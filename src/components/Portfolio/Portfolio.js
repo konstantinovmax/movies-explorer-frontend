@@ -1,53 +1,53 @@
-import './Portfolio.css';
+import styles from './Portfolio.module.scss';
 import portfolioLinkIcon from '../../images/portfolioLinkIcon.svg';
 
 const Portfolio = () => {
   return (
-    <section className="portfolio">
-      <h2 className="portfolio__section-title">Портфолио</h2>
-      <ul className="portfolio__list">
+    <section className={styles.root}>
+      <h2 className={styles.title}>Портфолио</h2>
+      <ul className={styles.list}>
         <li>
           <a
             href="https://konstantinovmax.github.io/how-to-learn/"
-            className="portfolio__link-container"
+            className={styles.container}
             target="_blank"
             rel="noreferrer"
           >
-            <p className="portfolio__link-text">Статичный сайт</p>
+            <p className={styles.linkText}>Статичный сайт</p>
             <img
-              className="portfolio__link-icon"
+              className={styles.linkIcon}
               src={portfolioLinkIcon}
               alt="Иконка ссылки"
             />
           </a>
         </li>
-        <span className="portfolio__line" />
+        <span className={styles.line} />
         <li>
           <a
             href="https://konstantinovmax.github.io/russian-travel/"
-            className="portfolio__link-container"
+            className={styles.container}
             target="_blank"
             rel="noreferrer"
           >
-            <p className="portfolio__link-text">Адаптивный сайт</p>
+            <p className={styles.linkText}>Адаптивный сайт</p>
             <img
-              className="portfolio__link-icon"
+              className={styles.linkIcon}
               src={portfolioLinkIcon}
               alt="Иконка ссылки"
             />
           </a>
         </li>
-        <span className="portfolio__line" />
+        <span className={styles.line} />
         <li>
           <a
             href="https://mestomk.students.nomoredomains.monster/"
-            className="portfolio__link-container"
+            className={styles.container}
             target="_blank"
             rel="noreferrer"
           >
-            <p className="portfolio__link-text">Одностраничное приложение</p>
+            <p className={styles.linkText}>Одностраничное приложение</p>
             <img
-              className="portfolio__link-icon"
+              className={styles.linkIcon}
               src={portfolioLinkIcon}
               alt="Иконка ссылки"
             />

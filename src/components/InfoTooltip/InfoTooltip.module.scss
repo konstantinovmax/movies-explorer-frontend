@@ -1,4 +1,4 @@
-.modal {
+.root {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,12 +13,12 @@
   transition: opacity 0.3s linear, visibility 0.3s linear;
 }
 
-.modal_is-open {
+.visible {
   visibility: visible;
   opacity: 1;
 }
 
-.modal__container {
+.container {
   width: 430px;
   background: #202020;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
@@ -32,16 +32,24 @@
   position: relative;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 510px) {
+    width: 70%;
+  }
 }
 
-.modal__container_type_signup-info {
+.containerInfo {
   display: flex;
   align-items: center;
   padding-top: 60px;
   padding-bottom: 60px;
+
+  @media (max-width: 510px) {
+    width: 90%;
+  }
 }
 
-.modal__close-button {
+.closeButton {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -53,49 +61,35 @@
   background-repeat: no-repeat;
   background-position: center;
   outline: none;
-}
 
-.modal__close-button:hover {
-  opacity: 0.6;
-  transition: opacity ease 0.3s;
-  cursor: pointer;
-}
-
-.modal__access-status {
-  margin-bottom: 32px;
-  width: 150px;
-  height: 150px;
-}
-
-.modal__title {
-  margin: 0;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 29px;
-  text-align: center;
-}
-
-@media screen and (max-width: 510px) {
-  .modal__container {
-    width: 70%;
+  &:hover {
+    opacity: 0.6;
+    transition: opacity ease 0.3s;
+    cursor: pointer;
   }
 }
 
-@media screen and (max-width: 510px) {
-  .modal__container_type_signup-info {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .modal__close-button_type-signup-info {
+.closeButtonInfo {
+  @media (max-width: 510px) {
     top: -60px;
     right: 43%;
   }
 }
 
-@media screen and (max-width: 510px) {
-  .modal__title {
+.accessStatus {
+  margin-bottom: 32px;
+  width: 150px;
+  height: 150px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 29px;
+  text-align: center;
+
+  @media (max-width: 510px) {
     font-size: 18px;
     line-height: 22px;
   }

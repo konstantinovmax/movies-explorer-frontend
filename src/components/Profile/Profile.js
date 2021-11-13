@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
-import './Profile.css';
+import styles from './Profile.module.scss';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import classNames from 'classnames';
 
 const Profile = ({ onUpdateUser, onLogout }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -88,22 +89,28 @@ const Profile = ({ onUpdateUser, onLogout }) => {
   }, [nameError, emailError, name, email, currentUser]);
 
   return (
-    <div className="profile">
-      <div className="profile__user-data-container">
-        <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
+    <div className={styles.root}>
+      <div className={styles.userDataContainer}>
+        <h1 className={styles.title}>{`Привет, ${currentUser.name}!`}</h1>
         <form
           id="profile-edit-form"
-          className="profile__form"
+          className={styles.form}
           onSubmit={handleSubmit}
         >
-          <div className="profile__user-name-email-container profile__user-name-email-container_type_first">
-            <p className="profile__user-data">Имя</p>
+          <div
+            className={classNames(
+              styles.userContainer,
+              styles.userContainerFirst
+            )}
+          >
+            <p className={styles.userData}>Имя</p>
             <input
               type="text"
               name="name"
-              className={`profile__input ${
-                isNameDirty && nameError ? 'profile__input_type_error' : ''
-              }`}
+              className={classNames(
+                styles.input,
+                isNameDirty && nameError ? styles.errorColor : ''
+              )}
               minLength={2}
               maxLength={30}
               autoComplete="off"
@@ -113,14 +120,20 @@ const Profile = ({ onUpdateUser, onLogout }) => {
               disabled={isInputDisabled}
             />
           </div>
-          <div className="profile__user-name-email-container profile__user-name-email-container_type_second">
-            <p className="profile__user-data">Почта</p>
+          <div
+            className={classNames(
+              styles.userContainer,
+              styles.userContainerSecond
+            )}
+          >
+            <p className={styles.userData}>Почта</p>
             <input
               type="email"
               name="email"
-              className={`profile__input ${
-                isEmailDirty && emailError ? 'profile__input_type_error' : ''
-              }`}
+              className={classNames(
+                styles.input,
+                isEmailDirty && emailError ? styles.errorColor : ''
+              )}
               autoComplete="off"
               required
               value={email || ''}
@@ -130,16 +143,16 @@ const Profile = ({ onUpdateUser, onLogout }) => {
           </div>
         </form>
       </div>
-      <div className="profile__buttons-container">
+      <div className={styles.buttonsContainer}>
         {((isNameDirty && nameError) || (isEmailDirty && emailError)) && (
-          <span id="profile-input-error" className="profile__input-error">
+          <span id="profile-input-error" className={styles.inputError}>
             {nameError || emailError}
           </span>
         )}
         {isVisibleEditProfileButton && (
           <button
             type="button"
-            className="profile__button profile__button_type_edit"
+            className={classNames(styles.button, styles.editButton)}
             onClick={handleClickEditProfileButton}
           >
             Редактировать
@@ -148,11 +161,10 @@ const Profile = ({ onUpdateUser, onLogout }) => {
         {isVisibleSubmitButton && (
           <button
             type="submit"
-            className={`profile__button_type_submit ${
-              isFormValid
-                ? 'profile__button_type_submit'
-                : 'profile__button_type_submit-disabled'
-            }`}
+            className={classNames(
+              styles.submitButton,
+              isFormValid ? styles.submitButton : styles.submitButtonDisabled
+            )}
             disabled={!isFormValid}
             form="profile-edit-form"
           >
@@ -162,7 +174,7 @@ const Profile = ({ onUpdateUser, onLogout }) => {
         {isVisibleLogoutButton && (
           <button
             type="button"
-            className="profile__button profile__button_type_logout"
+            className={classNames(styles.button, styles.logoutButton)}
             onClick={onLogout}
           >
             Выйти из аккаунта

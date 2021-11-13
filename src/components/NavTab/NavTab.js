@@ -1,16 +1,16 @@
 import { HashLink as Link } from 'react-router-hash-link';
-import './NavTab.css';
+import styles from './NavTab.module.scss';
 
 const NavTab = () => {
   return (
-    <nav className="nav-tab">
-      <Link to="/#about-project-id" className="nav-tab__link">
+    <nav className={styles.root}>
+      <Link to="/#about-project-id" className={styles.link}>
         О проекте
       </Link>
-      <Link to="/#techs-id" className="nav-tab__link">
+      <Link to="/#techs-id" className={styles.link}>
         Технологии
       </Link>
-      <Link to="/#about-me-id" className="nav-tab__link">
+      <Link to="/#about-me-id" className={styles.link}>
         Студент
       </Link>
     </nav>
