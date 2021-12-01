@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import styles from './AboutProject.module.scss';
 import classNames from 'classnames';
 
-const AboutProject = () => {
+const AboutProject: FC = () => {
   return (
     <section className={styles.root}>
       <h2 className={styles.title}>О проекте</h2>
@@ -28,7 +29,7 @@ const AboutProject = () => {
       <div
         className={classNames(
           styles.progressBarContainer,
-          styles.progressBarContainerFirst
+          styles.progressBarContainerFirst,
         )}
       >
         <div
@@ -37,7 +38,7 @@ const AboutProject = () => {
           <p
             className={classNames(
               styles.progressBarText,
-              styles.progressBarTextBlack
+              styles.progressBarTextBlack,
             )}
           >
             1 неделя
@@ -49,7 +50,7 @@ const AboutProject = () => {
           <p
             className={classNames(
               styles.progressBarText,
-              styles.progressBarTextWhite
+              styles.progressBarTextWhite,
             )}
           >
             4 недели
@@ -60,13 +61,13 @@ const AboutProject = () => {
         <div
           className={classNames(
             styles.progressBar,
-            styles.progressBarBackendDescription
+            styles.progressBarBackendDescription,
           )}
         >
           <p
             className={classNames(
               styles.progressBarText,
-              styles.progressBarTextGrey
+              styles.progressBarTextGrey,
             )}
           >
             Back-end
@@ -75,13 +76,13 @@ const AboutProject = () => {
         <div
           className={classNames(
             styles.progressBar,
-            styles.progressBarFrontendDescription
+            styles.progressBarFrontendDescription,
           )}
         >
           <p
             className={classNames(
               styles.progressBarText,
-              styles.progressBarTextGrey
+              styles.progressBarTextGrey,
             )}
           >
             Front-end

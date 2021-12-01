@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <Switch>
       <Route exact path="/">

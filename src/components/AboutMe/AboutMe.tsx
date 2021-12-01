@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import styles from './AboutMe.module.scss';
 import studentPhoto from '../../images/aboutMePhoto.jpg';
 
-const AboutMe = () => {
+const AboutMe: FC = () => {
   return (
     <section className={styles.root}>
       <h2 className={styles.title}>Студент</h2>

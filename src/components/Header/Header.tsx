@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styles from './Header.module.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,19 @@ import classNames from 'classnames';
 import Navigation from '../Navigation/Navigation';
 import projectLogo from '../../images/headerLogo.svg';
 
-const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
+type Props = {
+  isLoggedIn: boolean;
+  isOpen: boolean;
+  onClose: boolean;
+  onOpenMobileMenu: boolean;
+};
+
+const Header: FC<Props> = ({
+  isLoggedIn,
+  isOpen,
+  onClose,
+  onOpenMobileMenu,
+}) => {
   return (
     <Switch>
       <Route exact path="/">
@@ -29,7 +42,7 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
                 className={classNames(
                   styles.authContainer,
                   styles.authContainerHidden,
-                  styles.authContainerProfile
+                  styles.authContainerProfile,
                 )}
               >
                 <p className={styles.userData}>Аккаунт</p>
@@ -44,7 +57,7 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
               <span
                 className={classNames(
                   styles.button,
-                  isOpen && styles.closeButton
+                  isOpen && styles.closeButton,
                 )}
               />
             </button>
@@ -95,7 +108,7 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
               className={classNames(
                 styles.authContainer,
                 styles.authContainerHidden,
-                styles.authContainerProfile
+                styles.authContainerProfile,
               )}
             >
               <p className={styles.userData}>Аккаунт</p>
@@ -110,7 +123,7 @@ const Header = ({ isLoggedIn, isOpen, onClose, onOpenMobileMenu }) => {
             <span
               className={classNames(
                 styles.button,
-                isOpen && styles.closeButton
+                isOpen && styles.closeButton,
               )}
             />
           </button>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import styles from './App.module.scss';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -16,7 +16,13 @@ import Login from '../Login/Login';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
-const App = () => {
+type UserData = {
+  email?: String;
+  password?: String;
+  name?: String;
+};
+
+const App: FC = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
   const [userMovies, setUserMovies] = useState([]);
@@ -42,10 +48,14 @@ const App = () => {
     setIsInfoToolTipOpen(false);
   };
 
-  const handleRegistration = (email, password, name) => {
+  const handleRegistration = (
+    email: String,
+    password: String,
+    name: String,
+  ) => {
     mainApi
       .register(email, password, name)
-      .then((res) => {
+      .then(res => {
         if (res.successMessage) {
           setIsAccessNotice(true);
           setNoticeMessage(res.successMessage);
@@ -57,15 +67,15 @@ const App = () => {
           handleInfoToolTipOpen();
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
 
-  const handleLogin = (email, password) => {
+  const handleLogin = (email: String, password: String) => {
     mainApi
       .login(email, password)
-      .then((res) => {
+      .then(res => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
           setIsLoggedIn(true);
@@ -77,7 +87,7 @@ const App = () => {
           handleInfoToolTipOpen();
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -87,14 +97,14 @@ const App = () => {
     if (jwt) {
       mainApi
         .getContent(jwt)
-        .then((res) => {
+        .then(res => {
           if (res) {
             setCurrentUser(res);
             setIsLoggedIn(true);
             history.push('/movies');
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     } else {
@@ -105,22 +115,22 @@ const App = () => {
   const handleGetAllMovies = () => {
     setIsLoading(true);
     setMovieSearchError('');
-    const localMovies = JSON.parse(localStorage.getItem('movies'));
+    const localMovies = JSON.parse(localStorage.getItem('movies')!);
     if (localMovies) {
       setIsLoading(false);
       setMovies(matchedMovies(localMovies, userMovies));
     } else {
       moviesApi
         .getAllMovies()
-        .then((res) => {
+        .then(res => {
           setIsLoading(false);
           localStorage.setItem('movies', JSON.stringify(res));
           setMovies(matchedMovies(res, userMovies));
           setMovieSearchError('Фильмы не найдены');
         })
-        .catch((err) => {
+        .catch(err => {
           setMovieSearchError(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
+            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.',
           );
           setIsLoading(false);
           setIsAccessNotice(false);
@@ -131,47 +141,47 @@ const App = () => {
     }
   };
 
-  const handleAddFilm = (userMovieData) => {
+  const handleAddFilm = userMovieData => {
     mainApi
       .addFilm(userMovieData)
-      .then((newUserMovie) => {
+      .then(newUserMovie => {
         setUserMovies([newUserMovie, ...userMovies]);
       })
-      .catch((err) => {
+      .catch(err => {
         setIsAccessNotice(false);
         setNoticeMessage(
-          'Не удалось сохранить фильм. Попробуйте обновить страницу и повторить попытку.'
+          'Не удалось сохранить фильм. Попробуйте обновить страницу и повторить попытку.',
         );
         handleInfoToolTipOpen();
         console.log(err);
       });
   };
 
-  const handleDeleteFilm = (movie) => {
+  const handleDeleteFilm = movie => {
     const userMovie = userMovies.find(
-      (userMovie) =>
-        userMovie.movieId === (movie.id || movie.movieId || movie._id)
+      userMovie =>
+        userMovie.movieId === (movie.id || movie.movieId || movie._id),
     );
     mainApi
       .deleteFilm(userMovie._id)
       .then(() => {
         const newUserMovies = userMovies.filter(
-          (userMovie) =>
-            userMovie.movieId !== (movie.id || movie.movieId || movie._id)
+          userMovie =>
+            userMovie.movieId !== (movie.id || movie.movieId || movie._id),
         );
         setUserMovies(newUserMovies);
       })
-      .catch((err) => {
+      .catch(err => {
         setIsAccessNotice(false);
         setNoticeMessage(
-          'Не удалось удалить фильм. Попробуйте обновить страницу и повторить попытку.'
+          'Не удалось удалить фильм. Попробуйте обновить страницу и повторить попытку.',
         );
         handleInfoToolTipOpen();
         console.log(err);
       });
   };
 
-  const handleToggleMovie = (movie) => {
+  const handleToggleMovie = movie => {
     console.log(movie);
     if (!movie.isAlreadyAdded && !movie._id) {
       handleAddFilm(movie);
@@ -180,10 +190,10 @@ const App = () => {
     }
   };
 
-  const handleUpdateUserData = (newUserData) => {
+  const handleUpdateUserData = newUserData => {
     mainApi
       .updateUserData(newUserData)
-      .then((res) => {
+      .then(res => {
         if (res.email && res.name) {
           setCurrentUser(res);
           setIsAccessNotice(true);
@@ -195,7 +205,7 @@ const App = () => {
           handleInfoToolTipOpen();
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   };
@@ -207,9 +217,9 @@ const App = () => {
   };
 
   const matchedMovies = (movies, userMovies) => {
-    userMovies.forEach((userMovie) => {
+    userMovies.forEach(userMovie => {
       movies[
-        movies.findIndex((movie) => movie.id === userMovie.movieId)
+        movies.findIndex(movie => movie.id === userMovie.movieId)
       ].isAlreadyAdded = true;
     });
     return movies;
@@ -231,7 +241,7 @@ const App = () => {
         .catch(() => {
           setIsLoading(false);
           setMovieSearchError(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
+            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.',
           );
         });
     }

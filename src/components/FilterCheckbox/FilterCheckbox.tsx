@@ -1,6 +1,12 @@
+import { FC } from 'react';
 import styles from './FilterCheckbox.module.scss';
 
-const FilterCheckbox = ({ onCheckboxChecked, onCheckboxChange }) => {
+type Props = {
+  onCheckboxChecked: boolean;
+  onCheckboxChange: any;
+};
+
+const FilterCheckbox: FC<Props> = ({ onCheckboxChecked, onCheckboxChange }) => {
   return (
     <div className={styles.root}>
       <label className={styles.container}>
