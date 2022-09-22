@@ -8,12 +8,6 @@
 2. React с применением функциональных компонентов, защищенных роутов, компонентов высокого порядка
 3. Sass Modules
 
-**Ссылки на проект**
-
-- Фронтенд: [me-mk.students.nomoredomains.monster](https://me-mk.students.nomoredomains.monster/)
-- Бэкенд: [api.me-mk.students.nomoredomains.monster](https://api.me-mk.students.nomoredomains.monster/)
-- Публичный IP: `178.154.199.73`
-
 ---
 
 **Инструкция по развертыванию проекта**
