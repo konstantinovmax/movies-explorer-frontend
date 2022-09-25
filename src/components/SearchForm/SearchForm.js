@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from './SearchForm.module.scss';
 import classNames from 'classnames';

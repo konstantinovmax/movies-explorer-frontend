@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Main.module.scss';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
@@ -9,10 +10,10 @@ const Main = () => {
   return (
     <div className={styles.main}>
       <Promo />
-      <AboutProject />
+      {/* <AboutProject />
       <Techs />
       <AboutMe />
-      <Portfolio />
+      <Portfolio /> */}
     </div>
   );
 };
