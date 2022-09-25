@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import styles from './MoviesCardList.module.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';

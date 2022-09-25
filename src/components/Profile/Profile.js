@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import styles from './Profile.module.scss';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';

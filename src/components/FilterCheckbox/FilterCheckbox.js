@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './FilterCheckbox.module.scss';
 
 const FilterCheckbox = ({ onCheckboxChecked, onCheckboxChange }) => {

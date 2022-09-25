@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Header.module.scss';
 import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';

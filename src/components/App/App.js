@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from './App.module.scss';
 import { Route, Switch, useHistory } from 'react-router-dom';
